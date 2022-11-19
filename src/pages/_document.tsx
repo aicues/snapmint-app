@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 import type { DocumentProps } from 'next/document'
 import i18nextConfig from '../../next-i18next.config'
 
@@ -7,20 +7,29 @@ type Props = DocumentProps & {
 }
 
 class MyDocument extends Document<Props> {
+
+  // static async getInitialProps(ctx: DocumentContext) {
+  //   const initialProps = await Document.getInitialProps(ctx)
+  //   const locale = ctx.locale as string;
+  //   const dir = locale === "ar" ? "rtl" : "ltr"
+  //   console.log("_document locale "+locale +" "+ dir);
+  //   return { ...initialProps, locale: ctx?.locale || "en" }
+  // }
+  
   render() {
     const currentLocale = this.props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale
-    // const dir = currentLocale === "ar" ? "rtl" : "ltr"
+    const dir = currentLocale === "ar" ? "rtl" : "ltr" // needs browser reload to take effect :( how to fix?
     return (
-      <Html lang={currentLocale}>
+      <Html lang={this.props.locale} dir={dir}>
         <Head>
-          <meta charSet='utf-8' />
-          <link href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css' rel='stylesheet' />
-          <link href='/app.css' rel='stylesheet' />
-          <link href='https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css' rel='stylesheet' />
-          <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400|Oswald:600' rel='stylesheet' />
-          {/* <link data-react-helmet='true' rel='icon' href='https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/spaces%2F-L9iS6Wm2hynS5H9Gj7j%2Favatar.png?generation=1523462254548780&amp;alt=media' /> */}
+            <link rel="icon" href="/logo-2.svg" />
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+            <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+            {/* https://github.com/saadeghi/daisyui/issues/269#issuecomment-954951672 */}
+            <link rel="stylesheet" type="text/css" href={`/${dir}.css`} />
         </Head>
-        <body>
+        <body className='bg-base-100'>
           <Main />
           <NextScript />
         </body>

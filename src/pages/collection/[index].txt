@@ -1,0 +1,27 @@
+import React, { FormEvent, useRef, useState } from "react";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+type Props = {
+    // Add custom props here
+}
+
+const Index = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+
+    // Translations
+    const t = useTranslation('common');
+
+    return (
+        <div>Hey</div>
+    );
+};
+
+// or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+    props: {
+      ...await serverSideTranslations(locale ?? 'en', ['common', 'footer']),
+    },
+  })
+  
+export default Index;

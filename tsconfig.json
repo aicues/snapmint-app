@@ -15,16 +15,20 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-        "paths": {
-            "@assets/*": ["src/assets/*"],
-            "@ui/*": ["src/components/ui/*"],
-            "@components/*": ["src/components/*"],
-            "@widgets/*": ["src/components/widgets/*"],
-            "@containers/*": ["src/containers/*"],
-            "@layout/*": ["src/layouts/*"],
-            "@utils/*": ["src/utils/*"],
-            "@hooks": ["src/hooks"]
-        }
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@ui/*": ["src/components/ui/*"],
+      "@icons/*": ["src/components/icons/*"],
+      "@components/*": ["src/components/*"],
+      "@widgets/*": ["src/components/widgets/*"],
+      "@containers/*": ["src/containers/*"],
+      "@layout/*": ["src/layouts/*"],
+      "@utils/*": ["src/utils/*"],
+      "@config/*": ["src/config/*"],
+      "@hooks": ["src/hooks"],
+      "@public/*": ["public/*"],
+      "@models": ["src/models.ts"],
+    }
   },
   "include": [
     "next-env.d.ts",

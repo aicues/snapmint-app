@@ -1,0 +1,231 @@
+import React, { useRef, useState } from "react";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
+import { useRouter } from 'next/router'
+import { FileUploader } from "react-drag-drop-files";
+
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import {
+  ThirdwebNftMedia,
+  useAddress,
+  useDisconnect,
+  useMetamask,
+  useNetwork,
+  useNetworkMismatch,
+  useContract,
+  useNFTs,
+  useSigner,
+  useStorageUpload,
+  Web3Button 
+} from "@thirdweb-dev/react";
+import { SmartContract } from "@thirdweb-dev/sdk";
+
+type Props = {
+  // Add custom props here
+}
+
+const Create = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  
+  // Translations
+  const t= useTranslation('common');
+
+  // File upload
+  const fileTypes = [
+    "JPG",
+    "PNG",
+    "GIF",
+    "SVG",
+    "MP4",
+    "WEBM",
+    "MP3",
+    "WAV",
+    "OGG",
+    "GLB",
+    "GLTF",
+  ];
+  const fileInputRef = useRef(null);
+  const [file, setFile] = useState();
+  const handleFileChange = (file: any) => {
+    setFile(file);
+  };
+
+  // Properties
+  const [name, setName] = useState();
+  const [desc, setDesc] = useState();
+
+  // Mint
+  const contractAddress="0x613239b4b2399e1bCC0D211F76a541CB136c3255"
+  const handleMint = async (contract:SmartContract) => {
+    try {
+      contract.erc721.mint({
+        name: name,
+        // Image can be a File, or any url that points to a file.
+        image: file,
+        description: desc,
+        properties: {
+        // Add any properties you want to store on the NFT
+        country:"Qatar",
+        city: "Doha"
+        }
+    })
+
+    } catch (error) {
+      console.log(error);
+    } finally {
+      //setLoading(false)
+    }//end try
+  };
+
+
+
+    return (
+
+      
+
+      <div className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:p-16 md:p-12 sm:p-8 lg:my-20 md:my-14 sm:my-8">
+        
+        
+        
+        
+        
+        
+        
+        
+        {/* File Upload --------------------*/}
+        <div className="flex flex-col w-full lg:w-1/3 lg:py-2 place-items-start justify-start">
+
+        <div className="card cursor-pointer max-w-xs bg-base-100 shadow-xl p-4">
+          
+            {file ? (
+              
+              <figure className="card">
+                <img alt="" src={URL.createObjectURL(file)} onClick={() => setFile(undefined)}/>
+              </figure>
+              
+            ) : (
+              <div className="card  inline-block items-center text-center align-middle max-w-xs h-44 bg-base-200 text-base-200 p-4 border-dashed border-2 border-blue-600 ">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24" width="24" height="24"
+                    className="mb-4 inline-block dark:fill-white"
+                    >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M16 13l6.964 4.062-2.973.85 2.125 3.681-1.732 1-2.125-3.68-2.223 2.15L16 13zm-2-7h2v2h5a1 1 0 0 1 1 1v4h-2v-3H10v10h4v2H9a1 1 0 0 1-1-1v-5H6v-2h2V9a1 1 0 0 1 1-1h5V6zM4 14v2H2v-2h2zm0-4v2H2v-2h2zm0-4v2H2V6h2zm0-4v2H2V2h2zm4 0v2H6V2h2zm4 0v2h-2V2h2zm4 0v2h-2V2h2z" />
+                </svg>
+                <p className="align-middle pb-4 mx-auto max-w-xs text-base text-gray-400">
+                        Click here to upload a file
+                </p>
+                <p className="align-middle mx-auto max-w-xs text-xs text-gray-400">
+                        Image, Video, or Audio file
+                </p>
+                <p className="align-middle  mx-auto max-w-xs text-xs text-gray-400">
+                        max size: 1 GB
+                </p>
+                <FileUploader
+                    handleChange={handleFileChange}
+                    name="file"
+                    types={fileTypes}
+                    classes="file-drag cursor-pointer text-base-200"
+                    label="."
+                    // eslint-disable-next-line react/no-children-prop
+                    children="."
+                    maxSize={100}
+                    minSize={0}
+                />
+              </div>
+
+            )}
+          
+          
+          <div className="card-body">
+            <h2 className="card-title">Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+        {/* Form ----------------------- */}
+        <div className="flex flex-col w-full lg:w-2/3 lg:py-2 place-items-start justify-start">
+          {/* Name */}
+          <div className="form-control w-full max-w-md">
+            <label className="label">
+              <span className="label-text">Name</span>
+              <span className="label-text-alt">Alt label</span>
+            </label>
+            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-md placeholder:text-gray-400" />
+          </div>
+          {/* Description */}
+          <div className="form-control w-full max-w-md">
+            <label className="label">
+              <span className="label-text">Description</span>
+              <span className="label-text-alt">Alt label</span>
+            </label> 
+            <textarea className="textarea textarea-bordered h-24 w-full max-w-md" placeholder="Bio"></textarea>
+          </div>
+          {/*  */}
+          <div className="form-control w-full max-w-md">
+            <label className="label">
+              <span className="label-text">What is your name?</span>
+              <span className="label-text-alt">Alt label</span>
+            </label>
+            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-md" />
+          </div>
+          {/*  */}
+          <div className="form-control w-full max-w-md">
+            <label className="label">
+              <span className="label-text">What is your name?</span>
+              <span className="label-text-alt">Alt label</span>
+            </label>
+            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-md" />
+          </div>
+          {/* mINT BUTTON */}
+          <div className="form-control w-full max-w-md">
+          <Web3Button
+                // The contract address
+                contractAddress="0x613239b4b2399e1bCC0D211F76a541CB136c3255"
+                // Access the contract itself, perform any action you want on it:
+                action={async (contract) =>
+                contract.erc721.mint(
+                  {
+                    name: name,
+                    // Image can be a File, or any url that points to a file.
+                    image: file,
+                    description: desc,
+                    properties: {
+                      // Add any properties you want to store on the NFT
+                      country:"Qatar",
+                      city: "Doha"
+                    }
+                })
+              }
+              onError={(error) => { console.log(error) }}
+              onSuccess={(result) => { console.log(result) }}
+              onSubmit={() => { console.log("result") }}
+                
+                // Some customization of colors and styling
+                className=""
+                colorMode="dark"
+                accentColor="#8358FF"
+                //accentColor="#F213A4"
+            >
+                Mint NFT
+            </Web3Button>
+          </div>
+        </div>
+      </div>
+    );
+};
+
+// or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale ?? 'en', ['common', 'footer']),
+  },
+})
+
+export default Create;
+

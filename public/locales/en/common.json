@@ -1,4 +1,76 @@
 {
+  "home": {
+    "home-title": "Home title weee",
+    "home-description": "Home description"
+  },
+  "menu": {
+    "home": "Home title weee",
+    "qafu": "Qafu Qatar",
+    "worldcup": "Home description",
+    "market": "Market",
+    "assets": "My Assets"
+  },
+  "fetch": {
+    "loading": "Loading...",
+    "no-data": "A simple example",
+    "error": "A simple example"
+  },
+  "qafu": {
+    "title": "Qafu Qatar",
+    "sub-title": "Let's build Qatar Metaverse",
+    "step-1": "Step 1",
+    "step-2": "Step 2",
+    "step-3": "Step 3",
+    "cta-button": "Mint now",
+    "info-button": "How it works"
+  },
+  "create-nft": {
+    "media-title": "Media",
+    "media-info-uploadfile": "Click here to upload a file",
+    "media-info-files": "Image, Video, or Audio file",
+    "media-info-files-size": "max size: 1 GB",
+
+    "meta-title": "Enter NFT Information",
+    "meta-name": "Name",
+    "meta-name-placeholder": "type here..",
+    "meta-name-error": "error",
+    "meta-name-hint": "hint",
+
+    "meta-description": "Description",
+    "meta-description-placeholder": "type here..",
+    "meta-description-error": "error",
+    "meta-description-hint": "hint",
+
+    "meta-trait-title": "Properties",
+    "meta-trait-title-hint": "Properties hint",
+    "meta-trait-type": "Trait",
+    "meta-trait-type-placeholder": "type new trait..",
+    "meta-trait-type-hint": "hint",
+    "meta-trait-value": "Trait Value",
+    "meta-trait-value-placeholder": "type new trait value..",
+    "meta-trait-value-hint": "hint",
+    "meta-trait-add": "Add new trait",
+    "meta-trait-error": "error",
+
+    "submit-button": "Submit",
+    "submit-button-hint": "hint"
+  },
+
+
+  "market": {
+    "list": "List for Sale",
+    "buy-now": "Buy Now",
+    "make-offer": "Make Offer"
+  },
+
+  "footer": {
+    "buy-now": "Buy Now",
+    "make-offer": "Make Offer"
+  },
+
+
+
+
     "h1": "A simple example",
     "change-locale": "Change locale to \"{{changeTo}}\"",
     "to-second-page": "To second page",

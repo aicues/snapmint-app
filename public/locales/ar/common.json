@@ -1,4 +1,13 @@
 {
+  "home": {
+    "home-title": "عنوان المنزل",
+    "home-description": "وصف المنزل"
+  },
+
+  "market": {
+    "buy-now": "إِشتري الأن",
+    "make-offer": "قدم عرض"
+  },
   "h1": "Ein einfaches Beispiel",
   "change-locale": "Sprache wechseln zu \"{{changeTo}}\"",
   "to-second-page": "Zur zweiten Seite",

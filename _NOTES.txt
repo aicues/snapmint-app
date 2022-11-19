@@ -1,0 +1,23 @@
+Test Breadcamp
+search for pricing slider
+Final Theme - Dark/Light
+Alchimy or Moralis
+    Matic Faucet
+Deploy ThirdWeb Marketplace Missing Extensions (must inhert from https://github.com/thirdweb-dev/contracts/blob/main/contracts/marketplace/marketplace.md)
+Deploy ThirdWeb Marketplace/Matic/Testnet
+Code Marketplace Workflow
+Check Referal posiblity
+Check images for adultery
+Test local
+Check AWS/Azure Secret Manager (https://portal.thirdweb.com/sdk/set-up-the-sdk/securing-your-private-key)
+Add Seo
+Cleanup Code
+Deploy to Vercel
+Buy Matic
+Deploy ThirdWeb Marketplace/Matic/Mainnet
+Exchangly or Other Payment Provider Integration
+
+Ref:
+https://github.com/thirdweb-example/marketplace
+
+

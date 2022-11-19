@@ -1,0 +1,246 @@
+import React, { FormEvent, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
+import type { NextPage, NextPageContext , GetStaticProps, InferGetStaticPropsType, GetServerSideProps, GetStaticPaths } from "next";
+import { SSRConfig, useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useAddress } from "@thirdweb-dev/react";
+import { alchemy } from "@config/alchemy";
+import useSWR from 'swr'
+import {
+  OwnedNft,
+  OwnedNftsResponse,
+  getNftsForOwner,
+} from "@alch/alchemy-sdk";
+
+import NftCard from "@components/NftCard";
+import NftInfo from "@components/NftInfo";
+
+import { useContract, useNFT, useNFTs, ThirdwebNftMedia, ThirdwebNftMediaProps } from "@thirdweb-dev/react";
+
+import { ParsedUrlQuery } from 'querystring'
+interface IParams extends ParsedUrlQuery {
+    address: string
+}
+
+type Props = {
+    // Add custom props here
+    data: string; 
+    address: string;
+    trans: SSRConfig;
+}
+// const MyAssets: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const MyAssets: NextPage<Props> = (_props: Props) => {
+
+    // Next JS Router hook to redirect to other pages and to grab the query from the URL (listingId)
+    // const router = useRouter();
+    // De-construct listingId out of the router.query.
+    // This means that if the user visits /listing/0 then the listingId will be 0.
+    // If the user visits /listing/1 then the listingId will be 1.
+    // const { address } = router.query as { address: string };
+    // const userAddress = useAddress();
+    // const viewingOwnCollection = userAddress === address;
+
+
+    const router = useRouter();
+    const userAddress = useAddress();
+    const viewingOwnCollection = userAddress === _props.address;
+    const fetchedData: OwnedNftsResponse = JSON.parse(_props.data);
+
+
+
+    // Translations
+    const t = useTranslation('common');
+
+    // Alchemy
+    // const router = useRouter();
+    // const [nftList, setNFtList] = useState<OwnedNft[]>([]);
+    // const getNfts = async () => {
+    //     try {
+    //         const response = await getNftsForOwner(alchemy, address?.toString() ?? "");
+    //         // const fetchedData: OwnedNftsResponse = JSON.parse(response);
+    //         setNFtList(response.ownedNfts);
+    //         console.log(nftList);
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // };
+
+    // const { data, error } = useSWR('getNfts', getNfts)
+
+    // useEffect(() => {
+    //     getNfts()
+    // }, []);
+
+    // const [nftList, setNFtList] = useState<OwnedNft[]>([]);
+    // useEffect(() => {
+    
+    //     const getNfts = async () => {
+    //         try {
+    //             const response = await getNftsForOwner(alchemy, address?.toString() ?? "");
+    //             // const fetchedData: OwnedNftsResponse = JSON.parse(response);
+    //             setNFtList(response.ownedNfts);
+    //             console.log(nftList);
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     getNfts();
+    
+    // }, [address, nftList]);
+
+    
+    // const data = await getNftsForOwner(alchemy, address?.toString() ?? "");
+    // const fetchedData: OwnedNftsResponse = JSON.parse(data);
+
+
+    // NFTs
+    // const nfts = nftList?.map((ownedNft: OwnedNft) => {
+    // // const nfts = fetchedData?.ownedNfts?.map((ownedNft: OwnedNft) => {
+    //     const address = ownedNft.contract.address;
+    //     const description = ownedNft.description;
+    //     const image = ownedNft.media[0]?.gateway;
+
+    //     console.log("ownedNft", ownedNft);
+
+    
+    //     return (
+    //       <NftCard image={image} key={ownedNft.tokenId}>
+    //         <div id="container w-full">
+    //           <NftInfo
+    //             id={ownedNft.tokenId}
+    //             description={description}
+    //             title={ownedNft.title}
+    //             address={address}
+    //           />
+    //           {viewingOwnCollection && (
+    //             <div
+    //               id="list-button"
+    //               onClick={() => {
+    //                 router.push(
+    //                   `/create-listing/${address}?tokenId=${ownedNft.tokenId}`
+    //                 );
+    //               }}
+    //               className="primary-button mt-2"
+    //             >
+    //               List NFT
+    //             </div>
+    //           )}
+    //         </div>
+    //       </NftCard>
+    //     );
+    // });
+
+    const nfts = fetchedData?.ownedNfts?.map((ownedNft: OwnedNft) => {
+        const address = ownedNft.contract.address;
+        const description = ownedNft.description;
+        const image = ownedNft.media[0]?.gateway;
+
+        console.log("ownedNft", ownedNft);
+    
+        return (
+            <div key={ownedNft.rawMetadata?.name?.toString()}>
+          <ThirdwebNftMedia
+            metadata={ownedNft.rawMetadata as ThirdwebNftMediaProps["metadata"]}
+          />
+          <h3>{ownedNft.rawMetadata?.name}</h3>
+        </div>
+
+        );
+    });
+
+    // const { contract: nftCollection } = useContract(process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS, "nft-collection" );
+    // const { data: nfts3 } = useNFTs(nftCollection);
+
+    
+
+    if (!nfts || nfts.length === 0) {
+        return <div className="large-text">No Data To Show</div>;
+    }
+
+
+
+
+
+    return (
+        <div id="container" className="p-6 px-10">
+            <h1 className="text-center text-2xl font-normal text-slate-500 hover:font-semibold">
+                Collection at {userAddress}
+            </h1>
+            <div id="container" className="flex w-full flex-wrap justify-center">
+                {nfts}
+            </div>
+            {/* <div>
+                {nfts3?.map((nft) => (
+                    <div key={nft.metadata.id.toString()}>
+                    <ThirdwebNftMedia
+                        metadata={nft.metadata}
+                    />
+                    <h3>{nft.metadata.name}</h3>
+                    </div>
+            )
+            )}
+            </div> */}
+        </div>
+    );
+};
+
+// export async function getServerSideProps(context: NextPageContext) {
+//     const address: string | string[] | undefined = context.query.address;
+//     const data = await getNftsForOwner(alchemy, address?.toString() ?? "");
+//     const trans = await serverSideTranslations(context.locale ?? "en", ["common"]);
+  
+//     return { props: { data: JSON.stringify(data), address, trans } };
+//   }
+
+//   export const getServerSideProps: GetServerSideProps<Props> = async ({context: NextPageContext, locale}) => {
+//     const address: string | string[] | undefined = context.query.address;
+//     const data = await getNftsForOwner(alchemy, address?.toString() ?? "");
+  
+//     return { props: { data: JSON.stringify(data), address } };
+//   }
+
+// or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
+// export const getServerSideProps: GetServerSideProps<Props> = async ({ locale }) => ({
+// export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+    
+//     props: {
+//       ...await serverSideTranslations(locale ?? 'en', ['common', 'footer']),
+//     },
+//   })
+
+// export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+    
+//     props: {
+//       ...await serverSideTranslations(locale ?? 'en', ['common', 'footer']),
+//     },
+//   })
+
+export async function getServerSideProps(context: NextPageContext, locale: string) {
+  const address: string | string[] | undefined = context.query.address;
+  const data = await getNftsForOwner(alchemy, address?.toString() ?? "");
+
+  // const locale = context.query.locale;
+  console.log("-- getServerSideProps: locale", locale);
+  const trans = await serverSideTranslations(locale ?? "en", ["common"]);
+
+  return { props: { data: JSON.stringify(data), address, trans } };
+}
+
+// export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+//     const trans = await serverSideTranslations(locale ?? "en", ["common"]);
+//     return {
+//         props: {
+//             ...trans,
+//         },
+//     }
+// }
+  
+// export const getStaticPaths: GetStaticPaths = async() => {
+//     // const address: string | string[] | undefined = query.address;
+//     return {
+//       paths: [{ params: { address: '1' } }, { params: { address: '2' } }],
+//       fallback: false, // can also be true or 'blocking'
+//     }
+//   }
+
+export default MyAssets;
