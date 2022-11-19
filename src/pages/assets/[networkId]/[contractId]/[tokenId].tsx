@@ -118,6 +118,7 @@ const Asset: NextPage = (_props: InferGetStaticPropsType<typeof getServerSidePro
                 {/* 2. NFT Info & Price Card ----------------------------- */}
                 <Card  bordered={true} className={cardClassName}>
                     {/* Info */}
+                    
                     <Card.Title className="text-base">
                         <h1 className="text-primary text-lg font-extrabold sm:text-2xl lg:text-3xl">
                             {collectionMetadata?.name}{" "}
