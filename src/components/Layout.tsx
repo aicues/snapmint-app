@@ -12,13 +12,15 @@ import ThemeIcon from '@icons/ThemeIcon'
 import MenuIcon from '@icons/MenuIcon'
 import MultilingualIcon from '@icons/MultilingualIcon'
 import ArrowDownIcon from '@icons/ArrowDownIcon'
-import Logo from '@icons/logo-dark.svg'
+
 import LocaleSwitcher from "./LocaleSwitcher";
 import ThirdwebWallet from "./Wallets/ThirdwebWallet";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Logo from '@icons/logo-dark.svg'
+import Qafu from '@icons/q.svg'
 // import Logo_bold from '@icons/logo-dark-bold.svg'
 
 interface LayoutProps {
@@ -75,7 +77,8 @@ interface LayoutProps {
                         <Menu horizontal={true} className="p-0">
                             <Menu.Item>
                                 <Link href="/qafu-qatar/" className="rounded-lg mx-2">
-                                    <ComponentsIcon/>
+                                    {/* <ComponentsIcon/> */}
+                                    <Qafu/>
                                     {t('menu.qafu')}
                                 </Link>
                             </Menu.Item>

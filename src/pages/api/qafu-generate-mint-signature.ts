@@ -3,6 +3,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 // import animalNames from "../../animalNames";
 // import "../styles/globals.css";
 
+
+
 export default async function qafuGenerateMintSignature(
   req: NextApiRequest,
   res: NextApiResponse
@@ -13,7 +15,12 @@ export default async function qafuGenerateMintSignature(
 
     console.log("--authorAddress", authorAddress);
     console.log("--nftName", nftName);
-    console.log("--imagePath", imagePath);
+    // console.log("--imagePath", imagePath);
+
+    
+
+
+
 
     // You'll need to add your private key in a .env.local file in the root of your project
     // !!!!! NOTE !!!!! NEVER LEAK YOUR PRIVATE KEY to anyone!
@@ -75,18 +82,19 @@ export default async function qafuGenerateMintSignature(
       },
     });
 
-    console.log("-----------");
-    console.log({
-      signedPayloadStatus: signedPayload.payload,
-      signedPayloadSignature: signedPayload.signature,
-    });
-    console.log("-----------");
+    // console.log("-----------");
+    // console.log({
+    //   signedPayloadStatus: signedPayload.payload,
+    //   signedPayloadSignature: signedPayload.signature,
+    // });
+    // console.log("-----------");
 
     // Return back the signedPayload to the client.
     res.status(200).json({
       signedPayload: JSON.parse(JSON.stringify(signedPayload)),
     });
   } catch (e) {
+    console.log(`Server error ${e}`);
     res.status(500).json({ error: `Server error ${e}` });
   }
 }
