@@ -7,11 +7,7 @@ import Footer from "@components/Footer";
 import { useState } from "react";
 import { useAddress } from "@thirdweb-dev/react";
 
-import ComponentsIcon from '@icons/ComponentsIcon'
-import ThemeIcon from '@icons/ThemeIcon'
-import MenuIcon from '@icons/MenuIcon'
-import MultilingualIcon from '@icons/MultilingualIcon'
-import ArrowDownIcon from '@icons/ArrowDownIcon'
+
 
 import LocaleSwitcher from "./LocaleSwitcher";
 import ThirdwebWallet from "./Wallets/ThirdwebWallet";
@@ -19,9 +15,11 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Logo from '@icons/logo-dark.svg'
-import Qafu from '../../public/icons/qq.svg'
-// import Logo_bold from '@icons/logo-dark-bold.svg'
+import Logo from '@public/logo-dark.svg'
+// import Logo_bold from '@public/logo-dark-bold.svg'
+import Qafu from '@public/icons/qq.svg'
+import GeneralIcon from '@public/icons/general.svg'
+
 
 interface LayoutProps {
     children: JSX.Element
@@ -32,17 +30,7 @@ interface LayoutProps {
     const [visible, setVisible] = useState(false)
     const toggleVisible = () => { setVisible(!visible) }
     const address = useAddress();
-    
-    const mobileMenu1 = (
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
-        </ul>
-      )
+  
     // Translations
     const { t }= useTranslation('common');
 
@@ -62,20 +50,31 @@ interface LayoutProps {
         </Menu.Title>
         <Menu.Item>
             <Link href="/qafu-qatar/" className="rounded-lg mx-2">
-                <ComponentsIcon/>
-                {/* <Qafu/> */}
+                <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                 {t('menu.qafu')}
             </Link>
         </Menu.Item>
         <Menu.Item>
+            <Link href="/mondo/" className="rounded-lg mx-2">
+                <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
+                {t('menu.mondo')}
+            </Link>
+        </Menu.Item>
+        <Menu.Item>
+            <Link href="/tokens/sym/" className="rounded-lg mx-2">
+                <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
+                {t('menu.sym')}
+            </Link>
+        </Menu.Item>
+        <Menu.Item>
             <Link href="/market/" className="rounded-lg mx-2">
-                <ComponentsIcon/>
+                <GeneralIcon/>
                 {t('menu.market')}
             </Link>
         </Menu.Item>
         <Menu.Item>
             <Link href="/my/assets/" className="rounded-lg mx-2">
-                <ComponentsIcon/>
+                <GeneralIcon/>
                 {t('menu.assets')}
             </Link>
         </Menu.Item>
@@ -138,19 +137,33 @@ interface LayoutProps {
                             <Menu.Item>
                                 <Link href="/qafu-qatar/" className="rounded-lg mx-2">
                                     {/* <ComponentsIcon/> */}
-                                    <Qafu className="inline-block h-4 w-4 fill-current  m-0 md:h-5 md:w-5"/>
+                                    <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                                     {t('menu.qafu')}
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item>
+                                <Link href="/mondo/" className="rounded-lg mx-2">
+                                    {/* <ComponentsIcon/> */}
+                                    <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
+                                    {t('menu.mondo')}
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item>
+                                <Link href="/tokens/sym/" className="rounded-lg mx-2">
+                                    {/* <ComponentsIcon/> */}
+                                    <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
+                                    {t('menu.sym')}
                                 </Link>
                             </Menu.Item>
                             <Menu.Item >
                                 <Link href="/market/" className="rounded-lg mx-2">
-                                    <ComponentsIcon/>
+                                    <GeneralIcon className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                                     {t('menu.market')}
                                 </Link>
                             </Menu.Item>
                             <Menu.Item>
                                 <Link href="/my/assets/" className="rounded-lg mx-2">
-                                    <ComponentsIcon/>
+                                    <GeneralIcon/>
                                     {t('menu.assets')}
                                 </Link>
                             </Menu.Item>
@@ -166,8 +179,10 @@ interface LayoutProps {
                     {/* </div> */}
                 </Navbar>
             </div>
+            <div className="h-screen bg-base-200">
                 {/* <section className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max"> */}
                     {children}
+            </div>
                 {/* </section> */}
                 <Footer />
                 <ToastContainer autoClose={8000} />

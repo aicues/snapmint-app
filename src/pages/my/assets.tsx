@@ -6,6 +6,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useAddress } from "@thirdweb-dev/react";
 
 import NftCollectionOwned from "@components/NftCollectionOwned";
+import PleaseConnectWallet from "@components/Wallets/PleaseConnectWallet";
 
 type Props = {
     // Add custom props here
@@ -16,6 +17,11 @@ const MyAssets: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProp
     // Translations
     const { t }= useTranslation('common');
     const userAddress = useAddress();
+
+    // if(!userAddress) return PleaseConnectWallet;
+    if (!userAddress) {
+        return <PleaseConnectWallet/>;
+      }
 
     return (
         <section className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">

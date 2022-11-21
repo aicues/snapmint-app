@@ -4,8 +4,10 @@
     "home-description": "Home description"
   },
   "menu": {
-    "home": "Home title weee",
+    "home": "Home",
     "qafu": "Qafu Qatar",
+    "mondo": "Mondo",
+    "sym": "Sym Token",
     "worldcup": "Home description",
     "market": "Market",
     "assets": "My Assets"
@@ -61,6 +63,10 @@
     "list": "List for Sale",
     "buy-now": "Buy Now",
     "make-offer": "Make Offer"
+  },
+
+  "wallet": {
+    "please-connect": "Please Connect Wallet"
   },
 
   "footer": {

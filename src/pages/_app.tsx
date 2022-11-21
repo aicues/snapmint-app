@@ -23,6 +23,8 @@ const activeChainId = ChainId.Mumbai;
 
 
 
+
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
   // ref: https://blog.logrocket.com/how-to-build-a-progress-bar-indicator-in-next-js/#using-react-spinners

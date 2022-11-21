@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 // import { useTranslations } from "next-intl";
 
-import HeroQafuQatar from "@components/Hero/HeroQafuQatar-V2";
+import HeroQafuQatar from "@components/Hero/HeroQafuQatar-V1";
 
 type Props = {
   // Add custom props here
@@ -14,13 +14,14 @@ type Props = {
 const Index= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 
-  // const t = useTranslations("home");
-    const { t, ready }= useTranslation('common');
-    if (!ready) console.log('loadin trans');
+    const t = useTranslation("common");
 
     return (
         <>
           <HeroQafuQatar />
+          <section className="p-10 bg-base-300 text-base-content">
+            <div>Hwwww</div>
+          </section>
           {/* <div>{t('home.home-title')}</div> */}
         </>
     );
@@ -29,7 +30,7 @@ const Index= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 // or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale ?? 'en', ['common', 'footer']),
+    ...await serverSideTranslations(locale ?? 'en', ['common']),
   },
 })
 

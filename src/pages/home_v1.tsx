@@ -1,12 +1,10 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
-import { useRouter } from 'next/router'
+
 
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-// import { useTranslations } from "next-intl";
 
-import HeroHome from "@components/Hero/HeroHome-V3";
-// import SectionV1 from "@components/SectionV1";
+import HeroQafuQatar from "@components/Hero/HeroQafuQatar-V1";
 
 type Props = {
   // Add custom props here
@@ -14,16 +12,13 @@ type Props = {
 
 const Home_V1= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-
-  // const t = useTranslations("home");
     const { t }= useTranslation('common');
-    // if (!ready) console.log('loadin trans');
 
     return (
         <>
-          <HeroHome />
+          <HeroQafuQatar />
           {/* <SectionV1/> */}
-          <div>{t('home.home-title')}</div>
+          {/* <div>{t('home.home-title')}</div> */}
         </>
     );
 };
@@ -31,7 +26,7 @@ const Home_V1= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 // or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale ?? 'en', ['common', 'footer']),
+    ...await serverSideTranslations(locale ?? 'en', ['common']),
   },
 })
 

@@ -1,130 +1,69 @@
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next';
-// import heroImage from '@public/images/qafu-qatar-hero-1.webp'
-import heroImage from '@public/images/1a.png'
-import CheckRight from '@icons/CheckRight'
+
 import Link from 'next/link';
+import {Hero, Card, Table, Button} from "react-daisyui";
+
+import HeroImg from '@public/images/qq-hero-img-1.png'
+import HeroBg from '@public/images/qq-hero-bg-1.png'
 const HeroQafuQatar = function HeroQafuQatar() {
 
     const { t } = useTranslation('common');
 
     return (
-        <div className="hero min-h-fit text-primary place-items-start" style={{ backgroundImage: `url("/images/1.png")` }}>
-            <div className="hero-overlay bg-opacity-0"></div>
-            <div className="hero-content flex-col lg:flex-row-reverse md:flex-row-reverse place-items-center lg:px-32 md:px-16 sm:px-8 lg:my-20 md:my-14 sm:my-8">
-                <div className="flex flex-col w-full lg:w-1/2 lg:py-2 place-items-start justify-start">
-                    <Image 
-                        alt='' 
-                        src={heroImage}
+        <Hero 
+            className="hero min-h-fit text-primary place-items-start"
+            style={{ backgroundImage: `url(/images/qq-hero-bg-1.png)`}}
+        >
+            <Hero.Overlay className='bg-opacity-0' />
 
-                        className="rounded-lg shadow-2xl" />
-                </div>
-                <div className="flex flex-col w-full lg:w-1/2 lg:py-2 place-items-start justify-start">
-                    <h1 className="mb-2 text-white text-4xl font-extrabold sm:text-5xl lg:text-7xl">Qafu Qatar</h1>
-                    <h4 className="text-lg text-white font-extrabold sm:text-2xl lg:text-3xl">Let&apos;s build Qatar Metaverse</h4>
-                    {/* <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p> */}
-                    {/* <button className="btn btn-primary">Get Started</button> */}
-                    <div
-                    className="flex w-full flex-col items-start space-y-10 lg:flex-row lg:items-start lg:space-x-4 lg:space-y-0">
-                    <div className="my-2 flex max-w-sm flex-col gap-2 text-left">
-                        <div className="flex gap-2">
-                            {/* <CheckRight />
-                            {t("home.home-title")} */}
-                            <ul className="steps steps-vertical">
+            <Hero.Content className="p-4 container mx-auto lg:px-28 md:px-20 sm:px-8 lg:my-20 md:my-14 sm:my-8">
+                <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-full pt-4'>
+                    {/* Call out */}
+                    <Card compact={true} bordered={false} className='order-last md:order-first lg:order-first'>
+                        <Card.Image src='/images/qq-title-1.png' alt="Qafu Qatar" className='pt-4 pr-10' >
+                        </Card.Image>
+                        
+                        <Card.Title className="text-white place-items-start flex flex-col">
+                            {/* <h1 className="font-extrabold text-4xl sm:text-5xl lg:text-7xl mb-2">
+                                {t('qafu.title')}
+                            </h1> */}
+                            <h4 className="text-white/60 font-extrabold text-lg sm:text-2xl lg:text-3xl">
+                                {t('qafu.sub-title')}
+                            </h4>
+                        </Card.Title>
+                        <Card.Body className='!p-0 !pb-2'>
+                            <ul className="steps steps-vertical text-lg text-white">
                                 {/* https://github.com/saadeghi/daisyui/issues/825#issuecomment-1141952076 */}
-                                <li data-content="●" className="step after:!w-6 after:!h-6 !min-h-8 step-neutral">Step 1q</li>
-                                <li data-content="✓" className="step after:!w-6 after:!h-6 !min-h-8 step-neutral">Step 2q</li>
-                                <li data-content="★" className="step after:!w-6 after:!h-6 !min-h-8 step-neutral">Step 3q</li>
+                                <li data-content="1" className="step after:!w-6 after:!h-6 !min-h-8">{t('qafu.step-1')}</li>
+                                <li data-content="2" className="step after:!w-6 after:!h-6 !min-h-8">{t('qafu.step-2')}</li>
+                                <li data-content="3" className="step after:!w-6 after:!h-6 !min-h-8">{t('qafu.step-3')}</li>
                             </ul>
+                            <p> </p>
+                            <Card.Actions className="justify-end">
+                                <div className="flex flex-1 space-x-2 lg:justify-start">
+                                <Button responsive animation color={"primary"} size={"lg"} href="/qafu-qatar/create">
+                                    {t('qafu.cta-button')}
+                                </Button>
+                                <Button responsive animation color={"ghost"} size={"lg"} href="/qafu-qatar/info">
+                                    {t('qafu.info-button')}
+                                </Button>
+                                </div>
+                            </Card.Actions>
+                        </Card.Body>
+                    </Card>
+                    {/* Image */}
+                    <Card compact={true} bordered={false}  imageFull className="[&.card]:before:opacity-0 order-first md:order-last lg:order-last">
+                    <Card.Image className='p-2'
+                        src={HeroImg.src}
+                        alt="Qafu Qatar"
+                    />
+                    </Card>
+                </div>
 
-                        </div>
-                    </div>
-                </div>
-                {/* <!-- btns --> */}
-                <div className="mt-4 flex flex-1 place-items-end justify-center space-x-2 lg:justify-start">
-                    <Link href="/qafu-qatar/create"
-                        className="btn btn-ghost btn-active lg:btn-lg normal-case"><span
-                            className="hidden sm:inline">See components</span>
-                        <span className="inline sm:hidden">Components</span></Link>
-                    <Link href="/qafu-qatar/create" className="btn lg:btn-lg normal-case">How to
-                        use?</Link>
-                </div>
-                </div>
-                
-            </div>
-        </div> 
+            </Hero.Content>
+        </Hero>
     );
 }
 
 export default HeroQafuQatar;
-
-
-// <div className="hero min-h-screen text-primary -mt-[4rem] grid " style={{ backgroundImage: `url("/images/hero_static_qatar_v1.jpg")` }}>
-// <div className="hero-overlay bg-opacity-60"></div>
-// <div className="hero-content flex flex-col w-full lg:flex-row place-items-start">
-//     <div className="grid mb-2 py-4 text-center lg:py-2 lg:text-left flex-grow place-items-start">
-//     <div className="mb-2 py-4 text-center lg:py-10 lg:text-left"> 
-//         <h1 className="font-title mb-2 text-4xl font-extrabold sm:text-5xl lg:text-7xl">daisyUI</h1>
-//         <h2 className="font-title text-lg font-extrabold sm:text-2xl lg:text-3xl">The most popular,
-//             free and open-source <br />Tailwind CSS component library</h2>
-//     </div>
-//     </div> 
-//     <div className="divider lg:divider-horizontal"></div> 
-//     <div className="grid flex-grow place-items-start">
-//         <img src="https://placeimg.com/260/400/arch" className="max-w-sm rounded-lg shadow-2xl" />
-//     </div>
-// </div>
-
-// </div> 
-
-
-
-////////////////////////////////////////////////////////////
-
-
-// <div className="hero-content col-start-1 row-start-1 w-full max-w-7xl flex-col justify-between gap-10 pb-40  lg:items-end lg:gap-0 xl:gap-20 lg:flex-row-reverse">
-                
-// <div className="w-full min-w-[330px] max-w-[350px] h-[100px]">
-//     <img src="https://placeimg.com/260/400/arch" className="max-w-sm rounded-lg shadow-2xl" />
-// </div>
-// {/*  */}
-// <div className="lg:pl-10 lg:pb-32">
-// <div className="mb-2 py-4 text-center lg:py-10 lg:text-left">
-//     <h1 className="font-title mb-2 text-4xl font-extrabold sm:text-5xl lg:text-7xl">daisyUI</h1>
-//     <h2 className="font-title text-lg font-extrabold sm:text-2xl lg:text-3xl">The most popular,
-//         free and open-source <br />Tailwind CSS component library</h2>
-// </div>
-// <div
-//     className="flex w-full flex-col items-center space-y-10 lg:flex-row lg:items-start lg:space-x-4 lg:space-y-0">
-//     <div className="my-2 flex max-w-sm flex-col gap-2 text-left">
-//         <div className="flex gap-2"><svg width="20" height="20"
-//                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-//                 className="inline-block h-6 w-6 stroke-current">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-//                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-//             </svg>
-//             A plugin for Tailwind CSS</div>
-//         <div className="flex gap-2"><svg width="20" height="20"
-//                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-//                 className="inline-block h-6 w-6 stroke-current">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-//                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-//             </svg>
-//             Faster development</div>
-//     </div>
-// </div>
-// {/* <!-- btns --> */}
-// <div className="mt-4 flex flex-1 justify-center space-x-2 lg:mt-6 lg:justify-start"><a
-//         href="/components"
-//         className="btn btn-ghost btn-active lg:btn-lg normal-case"><span
-//             className="hidden sm:inline">See components</span>
-//         <span className="inline sm:hidden">Components</span></a>
-//     <a href="/docs/install" className="btn lg:btn-lg normal-case">How to
-//         use?</a>
-// </div>
-// </div>
-// {/*  */}
-// <div>
-
-// </div>
-// </div>

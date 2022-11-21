@@ -1,18 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { FormEvent, useRef, useState } from "react";
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType, GetServerSideProps, NextPageContext } from "next";
 import { useRouter } from 'next/router'
 // import { FileUploader } from "react-drag-drop-files";
 
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import {
-  ThirdwebNftMedia,
-  ThirdwebNftMediaProps,
-  
   useAddress,
-  useDisconnect,
-  useMetamask,
   useNetwork,
   useNetworkMismatch,
   useContract,
@@ -27,7 +22,6 @@ import { SmartContract } from "@thirdweb-dev/sdk";
 
 import {Button } from "react-daisyui";
 
-import GenericForm, {FormProps  } from "@components/forms/GenericForm";
 import {FieldValues, useForm, useFieldArray, UseFormRegister, SubmitHandler } from "react-hook-form";
 import {INftCreate} from "@models";
 
@@ -37,12 +31,19 @@ import { toast } from "react-toastify";
 
 type Props = {
   // Add custom props here
+  country: string
 }
 
-const Create: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+// const Create: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const Create: NextPage = (props: InferGetStaticPropsType<typeof getServerSideProps>) => {
 
+    // console.log("props:", props)
   // Translations
   const { t }= useTranslation('common');
+
+  const myProps = props as Awaited<Props>// string
+  console.log(myProps.country);
+  alert("Hello from " + myProps.country)
 
   const router = useRouter();
 
@@ -57,9 +58,6 @@ const Create: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>
 
 
   const [submitting, setSubmitting] = useState(false);
-  // let fakeNFTMetadata: NFTMetadata;
-  // fakeNFTMetadata = {} as NFTMetadata;
-  // fakeNFTMetadata.image="";
 
   const [file, setFile] = useState<File>();
 
@@ -402,12 +400,27 @@ const Create: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>
   );
 };
 
-// or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale ?? 'en', ['common', 'footer']),
-  },
-})
+export const getServerSideProps: GetServerSideProps<Props> = async ({ locale, query }) => {
+// export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+  const trans = await serverSideTranslations(locale ?? "en", ["common"]);
+  console.log("LOCAL", locale);
+  return {
+      props: {
+          country: query?.country as string ,
+          ...trans,
+      },
+  }
+}
+
+// export async function getServerSideProps(context: NextPageContext) {
+//   const contractAddress: string | string[] | undefined =
+//     context.query.contractAddress;
+//   const tokenId: string | string[] | undefined = context.query.tokenId;
+
+//   const data ={};
+
+//   return { props: { data: JSON.stringify(data) } };
+// }
 
 export default Create;
 

@@ -6,11 +6,11 @@ import { ThirdwebWallet, SimpleWallet } from "./Wallets/Index";
 
 import LocaleSwitcher from "./LocaleSwitcher"
 
-import ComponentsIcon from '@icons/ComponentsIcon'
-import ThemeIcon from '@icons/ThemeIcon'
-import MenuIcon from '@icons/MenuIcon'
-import MultilingualIcon from '@icons/MultilingualIcon'
-import ArrowDownIcon from '@icons/ArrowDownIcon'
+import ComponentsIcon from '@public/icons/general.svg'
+import ThemeIcon from '@public/icons/general.svg'
+import MenuIcon from '@public/icons/general.svg'
+import MultilingualIcon from '@public/icons/general.svg'
+import ArrowDownIcon from '@public/icons/general.svg'
 
 import {Button, Drawer, Menu, Navbar } from "react-daisyui";
 

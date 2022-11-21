@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import MultilingualIcon from '@icons/MultilingualIcon'
 import { Menu } from 'react-daisyui'
 // import { useTranslation } from 'next-i18next';
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
