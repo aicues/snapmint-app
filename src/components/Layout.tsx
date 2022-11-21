@@ -20,7 +20,7 @@ import { useTranslation } from "next-i18next";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logo from '@icons/logo-dark.svg'
-import Qafu from '@icons/q.svg'
+import Qafu from '../../public/icons/qq.svg'
 // import Logo_bold from '@icons/logo-dark-bold.svg'
 
 interface LayoutProps {
@@ -33,17 +33,77 @@ interface LayoutProps {
     const toggleVisible = () => { setVisible(!visible) }
     const address = useAddress();
     
+    const mobileMenu1 = (
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
+          <li>
+            <a>Sidebar Item 1</a>
+          </li>
+          <li>
+            <a>Sidebar Item 2</a>
+          </li>
+        </ul>
+      )
     // Translations
     const { t }= useTranslation('common');
+
+    const mobileMenu = (
+
+        <Menu className="bg-base-100 w-[80%] shadow-xl p-2 rounded-box">
+        <Menu.Item>
+            <Link href="/" aria-current="page" aria-label="Homepage" className="btn btn-ghost px-0 place-items-start">
+                <div className="text-primary text-lg transition-all duration-200 mb-8">
+                    <Logo className="inline-block h-8 w-full fill-current"/>
+                </div>
+            </Link>
+            
+        </Menu.Item>
+        <Menu.Title>
+          <span>Menu</span>
+        </Menu.Title>
+        <Menu.Item>
+            <Link href="/qafu-qatar/" className="rounded-lg mx-2">
+                <ComponentsIcon/>
+                {/* <Qafu/> */}
+                {t('menu.qafu')}
+            </Link>
+        </Menu.Item>
+        <Menu.Item>
+            <Link href="/market/" className="rounded-lg mx-2">
+                <ComponentsIcon/>
+                {t('menu.market')}
+            </Link>
+        </Menu.Item>
+        <Menu.Item>
+            <Link href="/my/assets/" className="rounded-lg mx-2">
+                <ComponentsIcon/>
+                {t('menu.assets')}
+            </Link>
+        </Menu.Item>
+        <Menu.Title>
+          <span>Tools</span>
+        </Menu.Title>
+        <Menu.Item>
+            <LocaleSwitcher/>
+        </Menu.Item>
+
+        <Menu.Item className="[&_span]:p-0 [&_span]:normal-case [&_span]:text-white">
+            <ThirdwebWallet/>
+        </Menu.Item>
+      </Menu>
+
+    )
+
+    
+
     return (
 
         <>
-        <Drawer side=""
-            open={visible}
-            onClickOverlay={toggleVisible}
-            className="bg-base-300"
-            contentClassName="scroll-smooth scroll-pt-20"
-        >
+        <Drawer side={mobileMenu}
+                open={visible}
+                onClickOverlay={toggleVisible}
+                className="bg-base-300"
+                contentClassName="scroll-smooth scroll-pt-20" 
+       >
             <div className="\n  sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 \n  text-primary-content\n  ">
                 <Navbar>
                     <div className="flex-none lg:hidden">
@@ -78,11 +138,11 @@ interface LayoutProps {
                             <Menu.Item>
                                 <Link href="/qafu-qatar/" className="rounded-lg mx-2">
                                     {/* <ComponentsIcon/> */}
-                                    <Qafu/>
+                                    <Qafu className="inline-block h-4 w-4 fill-current  m-0 md:h-5 md:w-5"/>
                                     {t('menu.qafu')}
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item>
+                            <Menu.Item >
                                 <Link href="/market/" className="rounded-lg mx-2">
                                     <ComponentsIcon/>
                                     {t('menu.market')}
@@ -112,6 +172,7 @@ interface LayoutProps {
                 <Footer />
                 <ToastContainer autoClose={8000} />
                 {/* drawer-side */}
+                {/* <div>ahjshjashjaha</div> */}
         </Drawer>
         </>
 

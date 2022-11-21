@@ -7319,14 +7319,14 @@ html {
   margin-right: auto;
 }
 
-.mx-0 {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .my-2 {
@@ -7356,6 +7356,10 @@ html {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .mt-2 {
@@ -7427,12 +7431,12 @@ html {
   height: 1.5rem;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
 .h-8 {
   height: 2rem;
+}
+
+.h-16 {
+  height: 4rem;
 }
 
 .h-\[70vh\] {
@@ -7495,6 +7499,10 @@ html {
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-\[80\%\] {
+  width: 80%;
 }
 
 .w-52 {
@@ -7872,6 +7880,10 @@ html {
   --tw-bg-opacity: 0.6;
 }
 
+.bg-opacity-0 {
+  --tw-bg-opacity: 0;
+}
+
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -7918,8 +7930,16 @@ html {
   padding: 2.5rem;
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
 .p-3 {
   padding: 0.75rem;
+}
+
+.\!p-0 {
+  padding: 0px !important;
 }
 
 .px-0 {
@@ -7993,6 +8013,10 @@ html {
 
 .pb-6 {
   padding-bottom: 1.5rem;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
 }
 
 .text-left {
@@ -8175,6 +8199,10 @@ html {
 
 .text-current {
   color: currentColor;
+}
+
+.text-white\/60 {
+  color: rgb(255 255 255 / 0.6);
 }
 
 .underline {
@@ -8493,6 +8521,11 @@ html {
     padding-right: 4rem;
   }
 
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -8781,4 +8814,9 @@ html {
 .\[\&\.card\]\:before\:opacity-50.card::before {
   content: var(--tw-content);
   opacity: 0.5;
+}
+
+.\[\&\.card\]\:before\:opacity-0.card::before {
+  content: var(--tw-content);
+  opacity: 0;
 }

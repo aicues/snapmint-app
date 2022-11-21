@@ -59,8 +59,8 @@ export default function Geo({
               <Image
                 alt={`${country} flag`}
                 className="rounded-full"
-                src={`https://flagcdn.com/96x72/${country?.toLowerCase()}.png`}
-                // src={`https://flagcdn.com/${country.toLowerCase()}.svg`}
+                // src={`https://flagcdn.com/96x72/${country?.toLowerCase()}.png`}
+                src={`https://flagcdn.com/${country?.toLowerCase()}.svg`}
                 width={32}
                 height={32}
               />

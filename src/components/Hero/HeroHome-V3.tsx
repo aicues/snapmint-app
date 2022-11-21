@@ -8,7 +8,7 @@ const HeroHome = function HeroHome() {
     const { t } = useTranslation('common');
 
     return (
-        <div className="hero min-h-fit text-primary place-items-start" style={{ backgroundImage: `url("/images/stock-vector-qatar-skyline-silhouette-in-colorful-geometric-style-symbol-for-your-design-vector-illustration-2132951983.jpg")` }}>
+        <div className="hero min-h-fit text-primary place-items-start" style={{ backgroundImage: `url("/images/1.png")` }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content flex-col lg:flex-row-reverse md:flex-row-reverse place-items-center lg:px-32 md:px-16 sm:px-8 lg:my-20 md:my-14 sm:my-8">
                 <div className="flex flex-col w-full lg:w-1/2 lg:py-2 place-items-start justify-start">

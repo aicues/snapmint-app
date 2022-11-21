@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 // import { useTranslations } from "next-intl";
 
-import HeroQafuQatar from "@components/Hero/HeroQafuQatar-V1";
+import HeroQafuQatar from "@components/Hero/HeroQafuQatar-V2";
 
 type Props = {
   // Add custom props here
@@ -19,7 +19,10 @@ const Index= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
     if (!ready) console.log('loadin trans');
 
     return (
-        <><HeroQafuQatar /><div>{t('home.home-title')}</div></>
+        <>
+          <HeroQafuQatar />
+          {/* <div>{t('home.home-title')}</div> */}
+        </>
     );
 };
 
