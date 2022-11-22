@@ -20,7 +20,7 @@ const Index= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <>
           <HeroQafuQatar />
           <section className="p-10 text-base-content">
-            <div>Sym</div>
+            {/* <div>Sym</div> */}
           </section>
         </>
     );

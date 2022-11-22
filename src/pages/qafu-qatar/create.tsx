@@ -31,7 +31,8 @@ import { toast } from "react-toastify";
 
 type Props = {
   // Add custom props here
-  country: string
+  countryName: string,
+  city: string,
 }
 
 // const Create: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -42,7 +43,7 @@ type Props = {
   const { t }= useTranslation('common');
 
   const myProps = props as Awaited<Props>// string
-  console.log(myProps.country);
+  console.log(myProps.countryName);
   // alert("Hello from " + myProps.country)
 
   const router = useRouter();
@@ -214,7 +215,7 @@ type Props = {
     defaultValues: {
       name: "",
       description: "",
-      traits: [{ name: "Country", value: "Qatar" }, { name: "City", value: "Doha" }]
+    traits: [{ name: "Country", value: myProps.countryName }, { name: "City", value: myProps.city }]
     } as INftCreate
   });
   // dynamic fields, ref: https://react-hook-form.com/api/usefieldarray/
@@ -318,7 +319,7 @@ type Props = {
       <div className="card h-max w-full lg:w-2/3 bg-base-300 p-4 rounded-box place-items-start justify-start">
         {/* <GenericForm url="/api/qafu-generate-mint-signature" renderForm={renderForm} /> */}
         <h2 className="card-title">{t('create-nft.meta-title')}</h2>
-        <h3>Hello from {myProps.country}</h3>
+        {/* <h3>Hello from {myProps.countryName}</h3> */}
         <ul className="w-full">
           <li key="name" className= "form-control w-full">
               <label className="label w-full" htmlFor="name">
@@ -407,7 +408,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ locale, qu
   console.log("LOCAL", locale);
   return {
       props: {
-          country: query?.country as string ,
+          countryName: query?.countryName as string ,
+          city: query?.city as string ,
           ...trans,
       },
   }

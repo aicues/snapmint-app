@@ -5,12 +5,16 @@ const JSON_URL =
   'https://raw.githubusercontent.com/mledoze/countries/master/dist/countries.json'
 
 async function setupCountryInfo() {
+  console.log('-------- download countriesData')
+  
   const req = await fetch(JSON_URL)
   const countriesData = await req.json()
 
   // grab only the country data we need
+  
   const data = countriesData.map((x) => ({
     cca2: x.cca2,
+    countryName: x.name.common,
     currencies: x.currencies,
     languages: x.languages,
   }))

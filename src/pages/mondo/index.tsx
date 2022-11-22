@@ -20,7 +20,7 @@ const Index= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <>
           <HeroQafuQatar />
           <section className="p-10 bg-base-300 text-base-content">
-            <div>Mondo</div>
+            {/* <div>Mondo</div> */}
           </section>
           {/* <div>{t('home.home-title')}</div> */}
         </>
