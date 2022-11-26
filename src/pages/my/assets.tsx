@@ -28,7 +28,7 @@ const MyAssets: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProp
     return (
         <section className="flex flex-col place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
             <h3 className="p-2 text-base-content/60 text-xl font-extrabold">Tokens</h3>
-            <TokenOwned tokenAddress={process.env.NEXT_PUBLIC_TOKEN_DROP_SYM_ADDRESS as string}/>
+            <TokenOwned tokenSymbol="sym" tokenAddress={process.env.NEXT_PUBLIC_TOKEN_DROP_SYM_ADDRESS as string}/>
             {/* <Divider className="my-1">NFT Collections</Divider> */}
             <h3 className="p-2 mt-4 text-base-content/60 text-xl font-extrabold">NFT Collections</h3>
             <NftCollectionOwned

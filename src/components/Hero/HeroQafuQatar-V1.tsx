@@ -6,7 +6,7 @@ import {Hero, Card, Table, Button} from "react-daisyui";
 
 import HeroImg from '@public/images/qq-hero-img-1.png'
 import HeroBg from '@public/images/qq-hero-bg-1.png'
-import HeroTitle from '@public/images/qq-title.png'
+import HeroTitle from '@public/images/qq-title-1.png'
 const HeroQafuQatar = function HeroQafuQatar() {
 
     const { t } = useTranslation('common');

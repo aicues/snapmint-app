@@ -39,7 +39,7 @@ export const NftCollectionOwned: React.FC<{
       <Card.Title className="p-4">
         {!loadingMetadata &&
           <>
-          <Avatar shape={"square"} border={false} borderColor={"primary"} size={"xs"} className="!w-10 !h-10" src={collectionMetadata?.image} />
+          <Avatar shape={"square"} border={false} borderColor={"primary"} size={24} className="" src={collectionMetadata?.image} />
           <div className="mx-2 flex-1 justify-center px-2 md:flex md:justify-start lg:flex lg:justify-start">
               <span className="font-bold">{collectionMetadata?.name} </span>
               {/* / {collectionMetadata?.symbol} */}
