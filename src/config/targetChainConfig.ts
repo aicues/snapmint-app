@@ -1,6 +1,7 @@
 import { ChainId } from "@thirdweb-dev/sdk";
 
 export const targetChainId = ChainId.Mumbai;
+export const targetChainString = "mumbai";
 
 /***
  * Need to add support for your own network

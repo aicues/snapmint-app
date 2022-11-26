@@ -2,8 +2,6 @@
 import React, { FormEvent, useRef, useState } from "react";
 import type { NextPage, GetStaticProps, InferGetStaticPropsType, GetServerSideProps, NextPageContext } from "next";
 import { useRouter } from 'next/router'
-// import { FileUploader } from "react-drag-drop-files";
-
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import {
@@ -20,7 +18,7 @@ import {
 import { ChainId, NATIVE_TOKEN_ADDRESS, NFTMetadata } from "@thirdweb-dev/sdk";
 import { SmartContract } from "@thirdweb-dev/sdk";
 
-import {Button } from "react-daisyui";
+import {Button, Badge } from "react-daisyui";
 
 import {FieldValues, useForm, useFieldArray, UseFormRegister, SubmitHandler } from "react-hook-form";
 import {INftCreate} from "@models";
@@ -33,17 +31,18 @@ type Props = {
   // Add custom props here
   countryName: string,
   city: string,
+  isFreeGasCountry: string
 }
 
 // const Create: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const Create: NextPage = (props: InferGetStaticPropsType<typeof getServerSideProps>) => {
+  const CreateQafu: NextPage = (props: InferGetStaticPropsType<typeof getServerSideProps>) => {
 
     // console.log("props:", props)
   // Translations
   const { t }= useTranslation('common');
 
   const myProps = props as Awaited<Props>// string
-  console.log(myProps.countryName);
+  // console.log(myProps.countryName);
   // alert("Hello from " + myProps.country)
 
   const router = useRouter();
@@ -120,7 +119,10 @@ type Props = {
       const { name, description, traits } = data;
 
        // Upload image to IPFS using Storage
-       const uris = await upload({ data: [file], });
+       const uris = await upload({ 
+        data: [file], 
+        // options: { uploadWithGatewayUrl: true, uploadWithoutDirectory: true },
+      });
 
       // console.log({
       //   // listingType: listingType.value,
@@ -244,11 +246,11 @@ type Props = {
 
   return (
   <form onSubmit={handleSubmit(mintWithSignature)} className="w-full">
-    <div className="bg-base-200  flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:p-16 md:p-12 sm:p-8">
+    <div className="flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:p-16 md:p-12 sm:p-8">
       
       {/* Left Card: Image */}
       <div className="card h-max w-full lg:w-1/3 bg-base-300 rounded-box place-items-start justify-start">
-        <div className="card w-full bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-300 shadow-xl">
           <div className="card-body p-4" >
             <h2 className="card-title">{t('create-nft.media-title')}</h2>
           </div>
@@ -278,7 +280,7 @@ type Props = {
             ) : (
               <>
                 <div 
-                  className="card cursor-pointer inline-block items-center text-center align-middle w-full h-44 bg-base-300 text-base-200 p-8 border-primary border-dashed border"
+                  className="card cursor-pointer inline-block items-center text-center align-middle w-full h-44 bg-base-100 text-base-200 p-8 border-primary border-dashed border"
                   onClick={uploadFile}
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={(e) => { e.preventDefault(); setFile(e.dataTransfer.files[0]); }}
@@ -381,20 +383,26 @@ type Props = {
               </tbody>
           </table>
           <div className="grid place-items-end">
-            <button type="button" className="btn btn-secondary btn-sm"
+            <button type="button" className="btn btn-ghost btn-sm"
+            
               onClick={() => append({ name: "", value: ""})} >
                 {t('create-nft.meta-trait-add')}
             </button>
           </div>
         </div>
-        
-        <Button type="submit" color={"primary"} fullWidth={true} responsive={true} active={true} animation={true} size={"md"}
+        {myProps.isFreeGasCountry==="true" && (
+          <div className="w-full mb-6">
+            <Badge color={"accent"} variant={"outline"} responsive size={"lg"} className="p-2 w-full h-full rounded-md justify-start">
+              {t('wallet.free-gas-and-fees')}<br/> {"  0 "} {"⧫ MATIC"}
+            </Badge>
+            {/* <span className="!sm:p-4 badge badge-accent badge-outline badge-lg p-4">
+              {t('wallet.free-gas-and-fees')}, {"  "}⧫ {"0 MATIC"}</span> */}
+          </div>
+        )}
+        <Button type="submit" color={"accent"} fullWidth={true} responsive={true} active={true} animation={true} size={"md"}
           loading={submitting} disabled={submitting}>
           {t('create-nft.submit-button')}
         </Button>
-        {/* <button type="submit" className="btn btn-primary mt-4 w-full">
-          {t('create-nft.submit-button')}
-        </button> */}
       </div>
       
     </div>
@@ -405,11 +413,12 @@ type Props = {
 export const getServerSideProps: GetServerSideProps<Props> = async ({ locale, query }) => {
 // export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
   const trans = await serverSideTranslations(locale ?? "en", ["common"]);
-  console.log("LOCAL", locale);
+  // console.log("LOCAL", locale);
   return {
       props: {
           countryName: query?.countryName as string ,
           city: query?.city as string ,
+          isFreeGasCountry: query?.isFreeGasCountry as  string,
           ...trans,
       },
   }
@@ -425,5 +434,5 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ locale, qu
 //   return { props: { data: JSON.stringify(data) } };
 // }
 
-export default Create;
+export default CreateQafu;
 

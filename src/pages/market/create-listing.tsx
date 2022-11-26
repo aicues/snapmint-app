@@ -23,10 +23,12 @@ import {
     import { serverSideTranslations } from "next-i18next/serverSideTranslations";
   import { useRouter } from "next/router";
   import { useState } from "react";
-  import {Button } from "react-daisyui";
+  import {Button, Badge } from "react-daisyui";
 
-  import { getNftMetadata, Nft, NftTokenType } from "@alch/alchemy-sdk";
-  import { alchemy } from "@config/alchemy";
+  // import { getNftMetadata, Nft, NftTokenType } from "@alch/alchemy-sdk";
+  // import { alchemy } from "@config/alchemy";
+
+  
 
 import { NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 
@@ -281,7 +283,7 @@ import { useTranslation } from "next-i18next";
     return (
       <TwoCardsContainer card1_width="lg:w-1/2" card2_width="lg:w-1/2"
         Card1={
-          <div className="card w-full bg-base-100 p-6 shadow-xl place-items-center justify-center">
+          <div className="card w-full bg-base-300 p-6 shadow-xl place-items-center justify-center">
             <MediaRenderer
                 //src={nft?.media[0].gateway} //alchemy
                 src={nft?.metadata.image}
@@ -311,7 +313,7 @@ import { useTranslation } from "next-i18next";
             <li key="price" className="form-control w-full">
               <label className="label w-full" htmlFor="price">
                 <span className="label-text">Price</span>
-                <span className="label-text-alt text-secondary">{price}{"  "}⧫ {" MATIC"}</span>
+                <span className="label-text-alt">{price}{"  "}⧫ {" MATIC"}</span>
               </label>
               <input type="number" name="price"
                 min="1.0" max="100" step="0.05" value={price}
@@ -347,13 +349,16 @@ import { useTranslation } from "next-i18next";
                 ))}
               </select>
             </li>
-            <li key="fees" className="form-control w-full py-4">
-              <span className="badge  badge-lg">Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas"}</span>
+            <li key="fees" className="form-control w-full pt-6">
+              <Badge color={"accent"} variant={"outline"} responsive size={"lg"} className="p-2 w-full h-full rounded-md justify-start">
+                Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas"}
+              </Badge>
+              {/* <span className="badge badge-accent badge-outline badge-lg p-4">Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas"}</span> */}
             </li>
             {/* Submit */}
             <li key="submit" className="form-control w-full py-4">
               {/* <button className="btn btn-primary w-full" onClick={create}>List</button> */}
-              <Button type="submit" color={"primary"} fullWidth={true} responsive={true} active={true} animation={true} size={"md"}
+              <Button type="submit" color={"accent"} fullWidth={true} responsive={true} active={true} animation={true} size={"md"}
                 loading={submitting} disabled={submitting}
                 onClick={create}
               >

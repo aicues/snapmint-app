@@ -15,11 +15,11 @@ module.exports = {
       //https://github.com/saadeghi/daisyui/issues/890#issuecomment-1165326225
       fontFamily: {
         sans: ['Cairo', ...defaultTheme.fontFamily.sans],
+        // sans: ['Noto Sans', ...defaultTheme.fontFamily.sans],
       }
     }  
   },
   plugins: [
-    require("tailwindcss-flip"),
     require("daisyui"), 
   ],
   // daisyUI config (optional)
@@ -40,12 +40,55 @@ module.exports = {
           "error": "#FF5757",
         },
       },
+      {
+        'snap-take-2': {
+           'primary' : '#DBC5F1',
+           'primary-focus' : '#ffffff',
+           'primary-content' : '#09020D',
+
+           'secondary' : '#8721BB',
+           'secondary-focus' : '#B55AE2',
+           'secondary-content' : '#09020D',
+
+           'accent' : '#2AFFC0',
+           'accent-focus' : '#80FFD9',
+           'accent-content' : '#09020D',
+
+           'neutral' : '#030104',
+           'neutral-focus' : '#430F61',
+           'neutral-content' : '#d5ccff',
+
+          //  'base-100' : '#1e0f30',
+          //  'base-200' : '#100416',
+          //  'base-300' : '#09020D',
+          'base-100' : '#320D45',
+           'base-200' : '#1e0f30',
+           'base-300' : '#100517',
+           'base-content' : '#ffffff',
+
+           'info' : '#1c92f2',
+           'success' : '#00CC8F',
+           'warning' : '#ff9900',
+           'error' : '#ff5724',
+
+          '--rounded-box': '1rem',          
+          '--rounded-btn': '0.5rem',        
+          '--rounded-badge': '1.9rem',      
+
+          '--animation-btn': '0.25s',       
+          '--animation-input': '0.2s',       
+
+          '--btn-text-case': 'uppercase',   
+          '--navbar-padding': '0.5rem',      
+          '--border-btn': '1px',            
+        },
+      },
     ],
     base: true,
     utils: true,
     logs: true,
     rtl: false,
     prefix: "",
-    darkTheme: "snapdark",
+    darkTheme: "snap-take-2",
   }
 }

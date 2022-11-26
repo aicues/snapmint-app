@@ -1,5 +1,6 @@
 import { NATIVE_TOKEN_ADDRESS, ThirdwebSDK } from "@thirdweb-dev/sdk";
 import type { NextApiRequest, NextApiResponse } from "next";
+import {targetChainString} from '@config/targetChainConfig';
 // import animalNames from "../../animalNames";
 // import "../styles/globals.css";
 
@@ -31,8 +32,8 @@ export default async function qafuGenerateMintSignature(
     // Initialize the Thirdweb SDK on the serverside
     const sdk = ThirdwebSDK.fromPrivateKey(
       // Your wallet private key (read it in from .env.local file)
-      process.env.PRIVATE_KEY as string,
-      "mumbai"
+      process.env.PRIVATE_KEY as string, 
+      targetChainString
     );
 
     // Load the NFT Collection via it's contract address using the SDK

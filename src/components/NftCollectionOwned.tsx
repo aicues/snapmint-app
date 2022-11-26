@@ -34,14 +34,15 @@ export const NftCollectionOwned: React.FC<{
 
 
   return (
-    <Card className="bg-base-300 flex flex-col place-items-start w-full">
+    <Card className="flex flex-col place-items-start w-full border-base-100" bordered>
        {/* Collection metadata */}
       <Card.Title className="p-4">
         {!loadingMetadata &&
           <>
-          <Avatar shape={"square"} border={true} borderColor={"primary"} size={"xs"} className="!w-10 !h-10" src={collectionMetadata?.image} />
+          <Avatar shape={"square"} border={false} borderColor={"primary"} size={"xs"} className="!w-10 !h-10" src={collectionMetadata?.image} />
           <div className="mx-2 flex-1 justify-center px-2 md:flex md:justify-start lg:flex lg:justify-start">
-              <span className="text-2xl font-bold">{collectionMetadata?.name} / {collectionMetadata?.symbol}</span>
+              <span className="font-bold">{collectionMetadata?.name} </span>
+              {/* / {collectionMetadata?.symbol} */}
               {/* <span className="text-2xl font-bold">/{collectionMetadata?.fee_recipient} / {collectionMetadata?.seller_fee_basis_points}</span> */}
           </div>
           </>
@@ -50,14 +51,14 @@ export const NftCollectionOwned: React.FC<{
 
       {/* Collection NFTs */}
       {/* ref: https://daily-dev-tips.com/posts/tailwind-grid-responsive-4-column-blocks/ */}
-      <Card.Body className="p-4 container mx-auto">
+      <Card.Body className="p-4 container mx-auto h-fit">
         <div className={gridClassName}>
         {!isLoading ?
           (
             <>
             {nfts?.map(e =>
               <Card key={e.metadata.id} compact={true} className="bg-base-100 shadow-xl">
-                <figure><ThirdwebNftMedia metadata={e.metadata}/></figure>
+                <figure className="object-scale-down h-44 w-fit"><ThirdwebNftMedia metadata={e.metadata}/></figure>
                 <Card.Body>
                   <Card.Title>{e.metadata.name}</Card.Title>
                   <Table compact={true} className="w-full">

@@ -60,7 +60,7 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
 //   } else 
   
   if (data?.length === 0) {
-    return <div className="large-text">No Data To Show</div>;
+    return <div className="text-lg">No Data To Show</div>;
   }
 
 

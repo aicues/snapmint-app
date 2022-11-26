@@ -5,8 +5,10 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useAddress } from "@thirdweb-dev/react";
 
+import {Divider} from "react-daisyui";
 import NftCollectionOwned from "@components/NftCollectionOwned";
 import PleaseConnectWallet from "@components/Wallets/PleaseConnectWallet";
+import TokenOwned from "@components/tokens/TokenOwned";
 
 type Props = {
     // Add custom props here
@@ -24,13 +26,18 @@ const MyAssets: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProp
       }
 
     return (
-        <section className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
+        <section className="flex flex-col place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
+            <h3 className="p-2 text-base-content/60 text-xl font-extrabold">Tokens</h3>
+            <TokenOwned tokenAddress={process.env.NEXT_PUBLIC_TOKEN_DROP_SYM_ADDRESS as string}/>
+            {/* <Divider className="my-1">NFT Collections</Divider> */}
+            <h3 className="p-2 mt-4 text-base-content/60 text-xl font-extrabold">NFT Collections</h3>
             <NftCollectionOwned
                 ownerAddress={userAddress as string}
                 collectionAddress={process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS as string}
                 columns={6}
                 displayCTA={true}
                 />
+            {/* <p></p> */}
         </section>
 
     );

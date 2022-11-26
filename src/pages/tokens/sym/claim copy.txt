@@ -1,0 +1,67 @@
+import type { NextPage, GetStaticProps, InferGetStaticPropsType, GetServerSideProps} from "next";
+import { useRouter } from 'next/router'
+
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { useTranslations } from "next-intl";
+
+// import Claim from "@components/Hero/HeroSym-V1";
+import { useState } from "react";
+import { Web3Button } from "@thirdweb-dev/react";
+
+type Props = {
+  // Add custom props 
+  isFreeGasCountry: string
+}
+
+const Claim = (props: InferGetStaticPropsType<typeof getServerSideProps>) => {
+
+
+    const t = useTranslation("common");
+    const myProps = props as Awaited<Props>
+    const contractAddress = process.env.NEXT_PUBLIC_TOKEN_DROP_SYM_ADDRESS
+
+    const [amountToClaim, setAmountToClaim] = useState("");
+
+    return (
+        <>
+          
+          <section className="p-10 text-base-content">
+            <div>
+                <input
+                type="text"
+                placeholder="Enter amount to claim"
+                onChange={(e) => setAmountToClaim(e.target.value)}
+                
+                />
+                <Web3Button
+                accentColor="#5204BF"
+                colorMode="dark"
+                contractAddress={contractAddress}
+                action={(contract) => contract.erc20.claim(amountToClaim)}
+                onSuccess={() => alert( amountToClaim + " tokens Claimed!")}
+                onError={(err) => {
+                  console.log(err);
+                  alert("error")}
+                }
+                >
+                Claim Tokens
+                </Web3Button>
+        </div>
+          </section>
+        </>
+    );
+};
+
+export const getServerSideProps: GetServerSideProps<Props> = async ({ locale, query }) => {
+  
+    const trans = await serverSideTranslations(locale ?? "en", ["common"]);
+    return {
+        props: {
+            isFreeGasCountry: query?.isFreeGasCountry as  string,
+            ...trans,
+        },
+    }
+  }
+
+export default Claim;

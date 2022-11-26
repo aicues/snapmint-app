@@ -1,3 +1,5 @@
+pre-alpha-2.3
+
 Test Breadcamp
 search for pricing slider
 Final Theme - Dark/Light
@@ -17,7 +19,19 @@ Buy Matic
 Deploy ThirdWeb Marketplace/Matic/Mainnet
 Exchangly or Other Payment Provider Integration
 
-Ref:
+Marketplace:
 https://github.com/thirdweb-example/marketplace
+
+Split:
+https://portal.thirdweb.com/pre-built-contracts/split
+
+
+Gasless:
+https://blog.thirdweb.com/guides/create-gasless-nft-drop/
+
+
+Token:
+
+
 
 

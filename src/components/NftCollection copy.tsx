@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export const NftCollection: React.FC<{
   collectionAddress: string;
-}> = ({ collectionAddress}) => {
+}> = ({ collectionAddress }) => {
 
   const router = useRouter();
   const etherscanURL = getEtherscanURL();
@@ -21,33 +21,33 @@ export const NftCollection: React.FC<{
     <div className="bg-base-200 flex flex-col place-items-start space-y-6">
       {!loadingMetadata &&
         <div className="flex place-items-start space-x-6">
-            <div className="avatar">
-              <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={collectionMetadata?.image} alt="NFT Collection Thumbnail" />
-                
-              </div>
+          <div className="avatar">
+            <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src={collectionMetadata?.image} alt="NFT Collection Thumbnail" />
+
             </div>
-            <div>
-              <div className="text-2xl font-semibold">{collectionMetadata?.name}</div>
-            </div>
+          </div>
+          <div>
+            <div className="text-2xl font-semibold">{collectionMetadata?.name}</div>
+          </div>
         </div>
       }
 
-    <div className="divider"></div>
+      <div className="divider"></div>
 
       {!isLoading ?
-      (<div className="flex space-x-12">
-        {nfts?.map(e =>
-          <div key={e.metadata.id} className="card card-compact w-64 bg-base-100 shadow-lg">
-            <figure><ThirdwebNftMedia metadata={e.metadata}/></figure>
-            <div className="card-body">
-              <h2 className="card-title text-primary">{collectionMetadata?.name}{" "}<span>#{e.metadata.id}</span></h2>
+        (<div className="flex space-x-12">
+          {nfts?.map(e =>
+            <div key={e.metadata.id} className="card card-compact w-64 bg-base-100 shadow-lg">
+              <figure><ThirdwebNftMedia metadata={e.metadata} /></figure>
+              <div className="card-body">
+                <h2 className="card-title text-primary">{collectionMetadata?.name}{" "}<span>#{e.metadata.id}</span></h2>
+              </div>
+
             </div>
-            
-          </div>
-        )}
-      </div>)
-      : (<p className="loading">Loading...</p>) }
+          )}
+        </div>)
+        : (<p className="loading">Loading...</p>)}
     </div>
   );
 };

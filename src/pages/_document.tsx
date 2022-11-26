@@ -25,7 +25,12 @@ class MyDocument extends Document<Props> {
             <link rel="icon" href="/logo.svg" />
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+            {/* <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet"/> */}
+            {currentLocale === "ar" ? (
+              <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+            ):(
+              <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+            )}
             {/* https://github.com/saadeghi/daisyui/issues/269#issuecomment-954951672 */}
             <link rel="stylesheet" type="text/css" href={`/${dir}.css`} />
         </Head>

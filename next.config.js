@@ -11,7 +11,7 @@ const nextConfig = {
   swcMinify: true,
   i18n,
   images: {
-    domains: ['flagcdn.com'],
+    domains: ['flagcdn.com','gateway.ipfscdn.io'],
   },
 
   webpack(config) {

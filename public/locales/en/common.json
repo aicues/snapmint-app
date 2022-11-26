@@ -58,6 +58,24 @@
     "submit-button-hint": "hint"
   },
 
+  "sym": {
+    "title": "Sym Token",
+    "sub-title": "Airdroping Now",
+    "step-1": "Step 1",
+    "step-2": "Step 2",
+    "step-3": "Step 3",
+    "cta-button": "Claim Now",
+    "info-button": "How it works"
+  },
+  "mondo": {
+    "title": "Mondo Collection",
+    "sub-title": "Airdroping Soon",
+    "step-1": "Step 1",
+    "step-2": "Step 2",
+    "step-3": "Step 3",
+    "cta-button": "Claim Now",
+    "info-button": "How it works"
+  },
 
   "market": {
     "list": "List for Sale",
@@ -66,7 +84,9 @@
   },
 
   "wallet": {
-    "please-connect": "Please Connect Wallet"
+    "please-connect": "Please Connect Wallet",
+    "free-gas": "You are eligible for free gas",
+    "free-gas-and-fees": "You are eligible for free fees and gas"
   },
 
   "footer": {

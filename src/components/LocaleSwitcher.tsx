@@ -26,23 +26,23 @@ export default function LocaleSwitcher() {
   return (
     // <div>
 
-      <>
+    <>
       {/* <Menu className="bg-base-100"> */}
-        {otherLocales.map((locale) => {
-          const { pathname, query, asPath } = router
-          return (
-            // <Menu.Item key={locale}>
-            <span key={locale} >
-              <Link href={{ pathname, query }} as={asPath} locale={locale} onClick={() => onToggleLanguageClick(locale)} className="rounded-lg mx-2">
-                {/* <MultilingualIcon/>  */}
-                {locale === "en" ? "English" : locale === "ar" ? "عربى" : null}
-              </Link>
-            </span>
-            // </Menu.Item>
-          )
-        })}
+      {otherLocales.map((locale) => {
+        const { pathname, query, asPath } = router
+        return (
+          // <Menu.Item key={locale}>
+          <span key={locale} >
+            <Link href={{ pathname, query }} as={asPath} locale={locale} onClick={() => onToggleLanguageClick(locale)} className="rounded-lg mx-2">
+              {/* <MultilingualIcon/>  */}
+              {locale === "en" ? "English" : locale === "ar" ? "عربى" : null}
+            </Link>
+          </span>
+          // </Menu.Item>
+        )
+      })}
       {/* </Menu> */}
-      </>
+    </>
     // </div> 
 
 

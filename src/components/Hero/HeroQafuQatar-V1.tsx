@@ -6,6 +6,7 @@ import {Hero, Card, Table, Button} from "react-daisyui";
 
 import HeroImg from '@public/images/qq-hero-img-1.png'
 import HeroBg from '@public/images/qq-hero-bg-1.png'
+import HeroTitle from '@public/images/qq-title.png'
 const HeroQafuQatar = function HeroQafuQatar() {
 
     const { t } = useTranslation('common');
@@ -21,8 +22,8 @@ const HeroQafuQatar = function HeroQafuQatar() {
                 <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-full pt-4'>
                     {/* Call out */}
                     <Card compact={true} bordered={false} className='order-last md:order-first lg:order-first'>
-                        <Card.Image src='/images/qq-title-1.png' alt="Qafu Qatar" className='pt-4 pr-10' >
-                        </Card.Image>
+                        <Card.Image src={HeroTitle.src} alt="Qafu Qatar" className='pt-4 pr-10' >
+                        </Card.Image> 
                         
                         <Card.Title className="text-white place-items-start flex flex-col">
                             {/* <h1 className="font-extrabold text-4xl sm:text-5xl lg:text-7xl mb-2">
@@ -42,10 +43,10 @@ const HeroQafuQatar = function HeroQafuQatar() {
                             <p> </p>
                             <Card.Actions className="justify-end">
                                 <div className="flex flex-1 space-x-2 lg:justify-start">
-                                <Button responsive animation color={"primary"} size={"lg"} href="/qafu-qatar/create">
+                                <Button responsive animation color={"accent"} size={"lg"} href="/qafu-qatar/create">
                                     {t('qafu.cta-button')}
                                 </Button>
-                                <Button responsive animation color={"ghost"} size={"lg"} href="/qafu-qatar/info">
+                                <Button responsive animation color={"ghost"}  variant={"outline"} size={"lg"} href="/qafu-qatar/info">
                                     {t('qafu.info-button')}
                                 </Button>
                                 </div>
@@ -53,11 +54,12 @@ const HeroQafuQatar = function HeroQafuQatar() {
                         </Card.Body>
                     </Card>
                     {/* Image */}
-                    <Card compact={true} bordered={false}  imageFull className="[&.card]:before:opacity-0 order-first md:order-last lg:order-last">
+                    <Card compact={true} bordered={false} className="[&.card]:before:opacity-0 order-first md:order-last lg:order-last">
                     <Card.Image className='p-2'
                         src={HeroImg.src}
                         alt="Qafu Qatar"
                     />
+                    <Card.Body></Card.Body>
                     </Card>
                 </div>
 

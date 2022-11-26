@@ -18,6 +18,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Logo from '@public/logo-dark.svg'
 // import Logo_bold from '@public/logo-dark-bold.svg'
 import Qafu from '@public/icons/qq.svg'
+import Sym from '@public/icons/sym.svg'
+import Mondo from '@public/icons/mondo.svg'
+import User from '@public/icons/user.svg'
 import GeneralIcon from '@public/icons/general.svg'
 
 
@@ -36,7 +39,7 @@ interface LayoutProps {
 
     const mobileMenu = (
 
-        <Menu className="bg-base-100 w-[80%] shadow-xl p-2 rounded-box">
+        <Menu className="bg-base-300 w-[80%] shadow-xl p-2 rounded-box">
         <Menu.Item>
             <Link href="/" aria-current="page" aria-label="Homepage" className="btn btn-ghost px-0 place-items-start">
                 <div className="text-primary text-lg transition-all duration-200 mb-8">
@@ -46,7 +49,16 @@ interface LayoutProps {
             
         </Menu.Item>
         <Menu.Title>
-          <span>Menu</span>
+          <span>Tokens</span>
+        </Menu.Title>
+        <Menu.Item>
+            <Link href="/tokens/sym/" className="rounded-lg mx-2">
+                <Sym className="inline-block h-4 w-4 fill-primary m-0 md:h-5 md:w-5"/>
+                {t('menu.sym')}
+            </Link>
+        </Menu.Item>
+        <Menu.Title>
+          <span>NFT Collections</span>
         </Menu.Title>
         <Menu.Item>
             <Link href="/qafu-qatar/" className="rounded-lg mx-2">
@@ -56,31 +68,27 @@ interface LayoutProps {
         </Menu.Item>
         <Menu.Item>
             <Link href="/mondo/" className="rounded-lg mx-2">
-                <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
+                <Mondo className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                 {t('menu.mondo')}
             </Link>
         </Menu.Item>
-        <Menu.Item>
-            <Link href="/tokens/sym/" className="rounded-lg mx-2">
-                <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
-                {t('menu.sym')}
-            </Link>
-        </Menu.Item>
+        
         <Menu.Item>
             <Link href="/market/" className="rounded-lg mx-2">
-                <GeneralIcon/>
+                <GeneralIcon className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                 {t('menu.market')}
-            </Link>
-        </Menu.Item>
-        <Menu.Item>
-            <Link href="/my/assets/" className="rounded-lg mx-2">
-                <GeneralIcon/>
-                {t('menu.assets')}
             </Link>
         </Menu.Item>
         <Menu.Title>
           <span>Tools</span>
         </Menu.Title>
+        <Menu.Item>
+            <Link href="/my/assets/" className="rounded-lg mx-2">
+                <User className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
+                {t('menu.assets')}
+            </Link>
+        </Menu.Item>
+        
         <Menu.Item>
             <LocaleSwitcher/>
         </Menu.Item>
@@ -144,14 +152,14 @@ interface LayoutProps {
                             <Menu.Item>
                                 <Link href="/mondo/" className="rounded-lg mx-2">
                                     {/* <ComponentsIcon/> */}
-                                    <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
+                                    <Mondo className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                                     {t('menu.mondo')}
                                 </Link>
                             </Menu.Item>
                             <Menu.Item>
                                 <Link href="/tokens/sym/" className="rounded-lg mx-2">
                                     {/* <ComponentsIcon/> */}
-                                    <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
+                                    <Sym className="inline-block h-4 w-4 fill-current hover:fill-primary m-0 md:h-5 md:w-5"/>
                                     {t('menu.sym')}
                                 </Link>
                             </Menu.Item>
@@ -163,7 +171,7 @@ interface LayoutProps {
                             </Menu.Item>
                             <Menu.Item>
                                 <Link href="/my/assets/" className="rounded-lg mx-2">
-                                    <GeneralIcon/>
+                                    <User className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                                     {t('menu.assets')}
                                 </Link>
                             </Menu.Item>
@@ -179,7 +187,7 @@ interface LayoutProps {
                     {/* </div> */}
                 </Navbar>
             </div>
-            <div className="h-screen bg-base-200">
+            <div className="min-h-screen bg-base-200">
                 {/* <section className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max"> */}
                     {children}
             </div>

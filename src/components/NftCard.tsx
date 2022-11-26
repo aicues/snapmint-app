@@ -27,15 +27,15 @@ export const NftCard: React.FC<{
   const { data: collectionMetadata, isLoading: loadingMetadata } = useContractMetadata(nftCollection);
 
   return (
-    <Card compact={true} imageFull className="bg-base-100 shadow-xl [&.card]:before:opacity-50">
-      <figure><MediaRenderer src={image} /></figure>
+    <Card compact={true} className="bg-base-100 shadow-xl [&.card]:before:opacity-50">
+      <figure className="object-scale-down h-44 w-fit"><MediaRenderer src={image} /></figure>
       <Card.Body>
-        <Card.Title className="text-primary">
+        <Card.Title className="text-primary-focus">
           {collectionMetadata?.name}{" "}<span>#{tokenId}</span>
         </Card.Title>
         <Table compact={true} className="w-full">
           <Table.Body className="[&>tr>th]:px-0 [&>tr>th]:py-0.5 [&>tr>td]:py-0.5 [&>tr>th>span]:text-base-content text-xs [&>tr>th]:bg-transparent [&>tr>td]:bg-transparent">
-            <Table.Row >
+            <Table.Row>
               <span>{title}</span>
               <span></span>
             </Table.Row>
@@ -45,7 +45,7 @@ export const NftCard: React.FC<{
             </Table.Row> */}
             <Table.Row>
               <span>Owner:</span>
-              <span className="text-accent">{formatDisplayAddress(ownerAddress)}</span>
+              <span className="!text-xs">{formatDisplayAddress(ownerAddress)}</span>
               {/* <a
                         target="_blank"
                         className="text-blue-700"
@@ -57,15 +57,15 @@ export const NftCard: React.FC<{
             </Table.Row>
             <Table.Row >
               <span>Price:</span>
-              <span>{buyoutPrice}</span>
+              <span className="text-accent">{buyoutPrice}</span>
             </Table.Row>
           </Table.Body>
         </Table>
         {/* dummy */}
         <p> </p>
         <Card.Actions className="justify-end">
-        <span className="badge badge-lg badge-info">{buyoutPrice}</span>
-          <Button color="primary" size={"sm"}
+        {/* <span className="badge badge-lg badge-info">{buyoutPrice}</span> */}
+          <Button animation color="accent" size={"md"}
             onClick={() => {
               router.push(
                 `/assets/polygon/${contractAddress}/${tokenId}`
