@@ -7,6 +7,7 @@ import Head from "next/head";
 import { appWithTranslation } from 'next-i18next'
 import Loader from '@components/Loader';
 import {targetChainId} from '@config/targetChainConfig';
+import { inDevEnvironment } from "@config/inDevEnvironment";
 import posthog from "posthog-js";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import SEO from '../../next-seo.config';
@@ -63,25 +64,28 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   // console.log("-- lat", lat);
   // console.log("-- lon", lon);
 
-  // useEffect(() => {
-  //   // Init PostHog
-  //   posthog.init("phc_La3SlzkBVemY3jCF5BFG5x1oinRJ8iXdHGw5wr4jPMP", {
-  //     api_host: "https://eu.posthog.com",
-  //     autocapture: true,
-  //     debug: true,
-  //     capture_pageview: true,
-  //   });
-  //   // register several super properties when a user signs up
-  //   posthog.register({
-  //     'Country': country,
-  //     'City': city,
-  //     'Lat': lat,
-  //     'Lon': lon
-  //   });
-  //   // posthog.register({
-  //   //   tw_dashboard_version: process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA,
-  //   // });
-  // }, []);
+  useEffect(() => {
+    // Init PostHog
+  if(!inDevEnvironment) { 
+    posthog.init("phc_La3SlzkBVemY3jCF5BFG5x1oinRJ8iXdHGw5wr4jPMP", {
+      api_host: "https://eu.posthog.com",
+      autocapture: true,
+      debug: true,
+      capture_pageview: true,
+    });
+    // register several super properties when a user signs up
+    posthog.register({
+      'Country': country,
+      'City': city,
+      'Lat': lat,
+      'Lon': lon
+    });
+    // posthog.register({
+    //   tw_dashboard_version: process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA,
+    // });
+  }
+
+  }, [country, city, lat, lon]);
   
   const snapmintMetaData :  DAppMetaData = {
     name: 'Snapmint',

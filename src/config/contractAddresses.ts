@@ -13,6 +13,9 @@ const ADDRESSES: IAddresses = {
   [ChainId.Mumbai]: {
     Marketplace: process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT_ADDRESS as string,
   },
+  [ChainId.Polygon]: {
+    Marketplace: process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT_ADDRESS as string,
+  },
 };
 
 export const readAppContractAddresses = (name: string) => {

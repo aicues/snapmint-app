@@ -29,6 +29,7 @@ import { formatDisplayAddress, hexToETH } from "@utils/web3utils";
 import { useRouter } from "next/router";
 import { useActiveListings, useMarketplace } from "@thirdweb-dev/react";
 import { readAppContractAddresses } from "@config/contractAddresses";
+import NoDataToShow  from "@components/NoDataToShow";
 import { getEtherscanURL } from "@config/targetChainConfig";
 import Loader from '@components/Loader';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -60,7 +61,7 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
 //   } else 
   
   if (data?.length === 0) {
-    return <div className="text-lg">No Data To Show</div>;
+    return <NoDataToShow/>;
   }
 
 
