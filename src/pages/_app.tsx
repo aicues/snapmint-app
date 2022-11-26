@@ -70,7 +70,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     posthog.init("phc_La3SlzkBVemY3jCF5BFG5x1oinRJ8iXdHGw5wr4jPMP", {
       api_host: "https://eu.posthog.com",
       autocapture: true,
-      debug: true,
+      debug: false,
       capture_pageview: true,
     });
     // register several super properties when a user signs up

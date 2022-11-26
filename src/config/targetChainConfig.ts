@@ -8,9 +8,12 @@ export const targetChainString = inDevEnvironment ? "mumbai" : "polygon";
  * Need to add support for your own network
  */
 export const getEtherscanURL = () => {
-  if (targetChainId === ChainId.Mumbai) {
-    return inDevEnvironment ? "https://mumbai.polygonscan.com/" : "https://polygonscan.com/";
-  } else {
+  if (targetChainId === ChainId.Polygon) {
+    return "https://polygonscan.com/";
+  } else if (targetChainId === ChainId.Mumbai) {
+    return "https://mumbai.polygonscan.com/";
+  }
+  else {
     console.log("Please add etherscan URL for your network");
     return undefined;
   }

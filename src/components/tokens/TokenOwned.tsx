@@ -41,6 +41,7 @@ export const TokenOwned: React.FC<{
           <div className="mx-2 flex-1 justify-center px-2 md:flex md:justify-start lg:flex lg:justify-start">
               <span className="">{balance?.data?.displayValue}
                 <span className="text-accent">{"  "}{tokenMetadata?.symbol}</span>  
+                <span className="text-primary">{"  "}{tokenMetadata?.image}</span> 
               </span>
           </div>
       </Card.Title>
