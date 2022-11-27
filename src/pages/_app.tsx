@@ -58,11 +58,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const { city } = router.query as { city: string };
   const { lat } = router.query as { lat: string };
   const { lon } = router.query as { lon: string };
+  const { isFreeGasCountry } = router.query as { isFreeGasCountry: string };
   // console.log("-- router", router.query);
-  console.log("-- country: ", country);
-  console.log("-- city: ", city);
-  console.log("-- lat: ", lat);
-  console.log("-- lon: ", lon);
+  // console.log("-- country: ", country);
+  // console.log("-- city: ", city);
+  // console.log("-- lat: ", lat);
+  // console.log("-- lon: ", lon);
 
   useEffect(() => {
     // Init PostHog
@@ -109,9 +110,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
 
 
-  const freeGasCountries : string[] = ["QA","AE","SA"] //, "US" "EG", "KW", "BH", "OM", "JO", "LB", "SY", "IQ", "YE", "PS", "IL", "TR", "CY", "GR", "RO", "BG", "MK", "AL", "RS", "ME", "BA", "HR", "SI", "AT", "CH", "DE", "NL", "BE", "LU", "FR", "ES", "PT", "AD", "MC", "SM", "VA", "IT", "LI", "MT", "PL", "SK", "CZ", "HU", "DK", "SE", "NO", "FI", "EE", "LV", "LT", "BY", "UA", "MD", "AM", "AZ", "GE", "KZ", "KG", "TJ", "TM", "UZ", "CN", "JP", "KR", "TW", "HK", "MO", "SG", "MY", "TH", "VN", "ID", "PH", "AU", "NZ", "FJ", "PG", "SB", "VU", "NC", "PF", "CK", "WS", "TO", "TV", "KI", "NU", "FM", "MH", "PW", "GU", "MP", "AS", "PR", "VI", "CA", "MX", "CR", "PA", "DO", "HT", "CU", "BS", "BB", "AG", "DM", "GD", "KN", "LC", "VC", "TT", "JM", "BZ", "SV", "HN", "NI", "GT", "BQ", "CW", "SX", "AW", "AI", "BM", "VG", "KY", "MS", "TC", "BM", "GL", "FO", "IS", "GB", "IE", "GG", "IM", "JE", "AX", "EE", "LV", "LT", "BY", "UA", "MD", "AM", "AZ", "GE", "KZ", "KG", "TJ", "TM", "UZ", "CN", "JP", "KR", "TW", "HK", "MO", "SG", "MY", "TH", "VN", "ID", "PH", "AU",
+  // const freeGasCountries : string[] = ["QA","AE","SA"] //, "US", "EG", "KW", "BH", "OM", "JO", "LB", "SY", "IQ", "YE", "PS", "IL", "TR", "CY", "GR", "RO", "BG", "MK", "AL", "RS", "ME", "BA", "HR", "SI", "AT", "CH", "DE", "NL", "BE", "LU", "FR", "ES", "PT", "AD", "MC", "SM", "VA", "IT", "LI", "MT", "PL", "SK", "CZ", "HU", "DK", "SE", "NO", "FI", "EE", "LV", "LT", "BY", "UA", "MD", "AM", "AZ", "GE", "KZ", "KG", "TJ", "TM", "UZ", "CN", "JP", "KR", "TW", "HK", "MO", "SG", "MY", "TH", "VN", "ID", "PH", "AU", "NZ", "FJ", "PG", "SB", "VU", "NC", "PF", "CK", "WS", "TO", "TV", "KI", "NU", "FM", "MH", "PW", "GU", "MP", "AS", "PR", "VI", "CA", "MX", "CR", "PA", "DO", "HT", "CU", "BS", "BB", "AG", "DM", "GD", "KN", "LC", "VC", "TT", "JM", "BZ", "SV", "HN", "NI", "GT", "BQ", "CW", "SX", "AW", "AI", "BM", "VG", "KY", "MS", "TC", "BM", "GL", "FO", "IS", "GB", "IE", "GG", "IM", "JE", "AX", "EE", "LV", "LT", "BY", "UA", "MD", "AM", "AZ", "GE", "KZ", "KG", "TJ", "TM", "UZ", "CN", "JP", "KR", "TW", "HK", "MO", "SG", "MY", "TH", "VN", "ID", "PH", "AU",
 
-  if (country && freeGasCountries.includes(country)) {
+  if (isFreeGasCountry && isFreeGasCountry==="true") {
     return (
       <ThirdwebProvider desiredChainId={activeChainId} dAppMeta={snapmintMetaData}
         sdkOptions={{
