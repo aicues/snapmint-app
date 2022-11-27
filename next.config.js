@@ -11,19 +11,28 @@ const nextConfig = {
   swcMinify: true,
   i18n,
   images: {
-    domains: ['flagcdn.com','gateway.ipfscdn.io'],
+    domains: ['flagcdn.com', 'gateway.ipfscdn.io'],
   },
 
   webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: ['@svgr/webpack'],
-    })
+    config.module.rules.push(
+      // svg
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+      },
+      // markdown
+      {
+        test: /\.md$/i,
+        use: 'raw-loader'
+
+      }
+    )
     return config
   },
 }
 
 // module.exports = withTM(nextConfig)
-module.exports = withCountryInfo( withTM(nextConfig) )
+module.exports = withCountryInfo(withTM(nextConfig))
 module.exports = nextConfig

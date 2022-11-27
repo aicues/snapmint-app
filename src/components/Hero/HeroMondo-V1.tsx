@@ -87,7 +87,7 @@ const HeroMondo: React.FC<{
 
                                     <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
                                         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-                                            <Countdown className="font-mono text-5xl" value={15} />
+                                            <Countdown className="font-mono text-5xl" value={4} />
                                             days
                                         </div>
                                         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">

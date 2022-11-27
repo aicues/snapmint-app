@@ -89,9 +89,9 @@ interface LayoutProps {
             </Link>
         </Menu.Item>
         
-        <Menu.Item>
+        {/* <Menu.Item>
             <LocaleSwitcher/>
-        </Menu.Item>
+        </Menu.Item> */}
 
         <Menu.Item className="[&_span]:p-0 [&_span]:normal-case [&_span]:text-white">
             <ThirdwebWallet/>
@@ -175,9 +175,9 @@ interface LayoutProps {
                                     {t('menu.assets')}
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item>
+                            {/* <Menu.Item>
                                 <LocaleSwitcher/>
-                            </Menu.Item>
+                            </Menu.Item> */}
                             {/* ref: https://stackoverflow.com/a/74041904 */}
                             <Menu.Item className="[&_span]:p-0 [&_span]:normal-case [&_span]:text-white" > 
                                 <ThirdwebWallet/>
