@@ -30,7 +30,7 @@ const Index= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <>
           <HeroQafuQatar />
 
-          <MarkdownSection background="bg-base-300" markdown={post} />
+          {/* <MarkdownSection background="bg-base-300" markdown={post} /> */}
 
         </>
     );

@@ -12,7 +12,7 @@ export const TokenOwned: React.FC<{
 }> = ({ tokenAddress, tokenSymbol }) => {
 
   const tokenDecimals = 18;
-  const tokenImage = 'http://www.snapmint.io/assets/' + tokenSymbol + '/' + tokenSymbol + '-64.png';
+  const tokenImage = 'http://www.snapmint.io/assets/' + tokenSymbol + '/' + tokenSymbol + '-256.png';
 
 
 
