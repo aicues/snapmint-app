@@ -13,7 +13,7 @@ import {
 } from "@alch/alchemy-sdk";
 
 import NftCard from "@components/NftCard";
-import NftInfo from "@components/NftInfo";
+// import NftInfo from "@components/NftInfo";
 import NftCollection from "@components/NftCollection";
 import NftMaketListings from "@components/NftMaketListings";
 

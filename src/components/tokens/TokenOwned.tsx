@@ -39,12 +39,18 @@ export const TokenOwned: React.FC<{
     );
   }
 
+
+  // Make sure we're in the browser
+  // if (typeof window !== 'undefined') {
+  //   router.push('/home');
+  //   return; 
+  // }
   //ref: https://docs.metamask.io/guide/registering-your-token.html
 
   const handleAddTokenToMetaMask = async () => {
     try {
       // wasAdded is a boolean. Like any RPC method, an error may be thrown.
-      const wasAdded = await window.ethereum.request({
+      const wasAdded = await window?.ethereum?.request({
         method: 'wallet_watchAsset',
         params: {
           type: 'ERC20', // Initially only supports ERC20, but eventually more!

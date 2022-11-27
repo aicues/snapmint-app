@@ -19,7 +19,7 @@ const Index = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <HeroMondo />
-      <section className="p-10 text-base-content ">
+      {/* <section className="p-10 text-base-content ">
         <div>Mondo</div>
         <div>Mondo</div>
         <div>Mondo</div>
@@ -31,7 +31,7 @@ const Index = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <div>Mondo</div>
         <div>Mondo</div>
         <div>Mondo</div>
-      </section>
+      </section> */}
       {/* <div>{t('home.home-title')}</div> */}
     </>
   );

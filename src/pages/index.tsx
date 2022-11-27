@@ -14,7 +14,7 @@ import QafuImg from '@public/assets/qq/qq-300.png';
 import SymImg from '@public/assets/sym/sym-300.png';
 import MondoImg from '@public/assets/mondo/mondo-300.png';
 
-import Home_V1 from "./home_v1";
+// import Home_V1 from "./home_v1";
 
 type Props = {
   // Add custom props here
