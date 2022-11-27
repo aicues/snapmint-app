@@ -20,7 +20,8 @@ const HeroSym: React.FC<{
     }> = ({ isFreeGasCountry}) => {
     const { t } = useTranslation('common');
 
-    const amountToClaim = BigNumber.from(20_000_000_000);
+    // const amountToClaim = BigNumber.from(15_000_000_000);
+    const amountToClaim = BigNumber.from(20_000);
 
 
     const tokenAddress = process.env.NEXT_PUBLIC_TOKEN_DROP_SYM_ADDRESS
