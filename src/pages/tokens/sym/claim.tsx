@@ -21,6 +21,8 @@ import { useMemo, useState } from "react";
 import { parseIneligibility } from "@utils/parseIneligibility";
 import { hextoNum } from "@utils/web3utils";
 
+import {Card, Button, Table, Avatar} from "react-daisyui";
+
 type Props = {
   // Add custom props 
   isFreeGasCountry: string
@@ -61,7 +63,7 @@ const ClaimSym = (props: InferGetStaticPropsType<typeof getServerSideProps>) => 
       try {
         return BigNumber.from(activeClaimCondition.data?.availableSupply || 0);
       } catch {
-        return BigNumber.from(1_000_000_000);
+        return BigNumber.from(1_000_000_000_000);
       }
     }, [activeClaimCondition.data?.availableSupply]);
 
@@ -76,7 +78,7 @@ const ClaimSym = (props: InferGetStaticPropsType<typeof getServerSideProps>) => 
       const n = totalAvailableSupply.add(
         BigNumber.from(claimedSupply.data?.value || 0)
       );
-      if (n.gte(1_000_000_000)) {
+      if (n.gte(1_000_000_000_000)) {
         return "";
       }
       return n.toString();
@@ -104,7 +106,7 @@ const ClaimSym = (props: InferGetStaticPropsType<typeof getServerSideProps>) => 
           activeClaimCondition.data?.maxClaimableSupply || 0
         );
       } catch (e) {
-        bnMaxClaimable = BigNumber.from(1_000_000_000);
+        bnMaxClaimable = BigNumber.from(20_000);
       }
   
       let perTransactionClaimable;
@@ -125,7 +127,7 @@ const ClaimSym = (props: InferGetStaticPropsType<typeof getServerSideProps>) => 
       if (snapshotClaimable) {
         if (snapshotClaimable === "0") {
           // allowed unlimited for the snapshot
-          bnMaxClaimable = BigNumber.from(1_000_000_000);
+          bnMaxClaimable = BigNumber.from(20_000);
         } else {
           try {
             bnMaxClaimable = BigNumber.from(snapshotClaimable);
@@ -231,75 +233,86 @@ const ClaimSym = (props: InferGetStaticPropsType<typeof getServerSideProps>) => 
 
 
     return (
-      <section className="p-10 text-base-content">
-        {(claimConditions.data &&
-          claimConditions.data.length > 0 &&
-          activeClaimCondition.isError) ||
-          (activeClaimCondition.data &&
-            activeClaimCondition.data.startTime > new Date() && (
-              <p>Drop is starting soon. Please check back later.</p>
+      <section className="flex flex-col place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
+
+        <Card compact className="bg-base-200 shadow-xl">
+          {(claimConditions.data &&
+            claimConditions.data.length > 0 &&
+            activeClaimCondition.isError) ||
+            (activeClaimCondition.data &&
+              activeClaimCondition.data.startTime > new Date() && (
+                <Card.Title>Drop is starting soon. Please check back later.</Card.Title>
             ))}
-  
-        {claimConditions.data?.length === 0 ||
-          (claimConditions.data?.every((cc) => cc.maxClaimableSupply === "0") && (
-            <p>
-              This drop is not ready to be minted yet. (No claim condition set)
-            </p>
-          ))}
-  
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            {contractMetadata?.image && (
-              <Image
-                src={contractMetadata?.image}
-                alt={contractMetadata?.name!}
-                width={200}
-                height={200}
-                style={{ objectFit: "contain" }}
-              />
-            )}
+            {claimConditions.data?.length === 0 ||
+            (claimConditions.data?.every((cc) => cc.maxClaimableSupply === "0") && (
+              <Card.Title>
+                This drop is not ready to be minted yet. (No claim condition set)
+              </Card.Title>
+            ))}
 
-            <h2 className=''>Claim Tokens</h2>
-            <p className=''>
-              Claim ERC20 tokens from{" "}
-              <span className=''>{contractMetadata?.name}</span>
-            </p>
-          </>
-        )}
-  
-        <hr className='' />
+            {isLoading ? (
+                <Card.Title>Loading</Card.Title>
+              ) : (
+                <>
+                  <Card.Title>Claim {contractMetadata?.name} ERC20 </Card.Title>
+                  {contractMetadata?.image && (
+                    <Image
+                      src={contractMetadata?.image}
+                      alt={contractMetadata?.name!}
+                      width={200}
+                      height={200}
+                      style={{ objectFit: "contain" }}
+                    />
+                  )}
 
-        <div className=''>
-          <input
-            type="number"
-            placeholder="Enter amount to claim"
-            onChange={(e) => {
-              const value = parseInt(e.target.value);
-              console.log(maxClaimable);
-              if (value > maxClaimable) {
-                setQuantity(maxClaimable);
-              } else if (value < 1) {
-                setQuantity(1);
-              } else {
-                setQuantity(value);
-              }
-            }}
-            value={quantity}
-            className=''
-          />
-          <Web3Button
-            accentColor="#5204BF"
-            colorMode="dark"
-            contractAddress={tokenAddress}
-            action={(contract) => contract.erc20.claim(quantity)}
-            onSuccess={() => alert("Claimed!")}
-            onError={(err) => alert(err)}
-          >
-            {buttonText}
-          </Web3Button>
-        </div>
+                  <Card.Body className='place-items-center'>
+                    <div className='p-8'>
+                     Max Claimable: {maxClaimable.toLocaleString("en-US")}
+                    </div>
+                    <div className='p-8'>
+                        <input
+                          type="number"
+                          min={1}
+                          placeholder="Enter amount to claim"
+                          onChange={(e) => {
+                            const value = parseInt(e.target.value);
+                            console.log(maxClaimable);
+                            if (value > maxClaimable) {
+                              setQuantity(maxClaimable);
+                            } else if (value < 1) {
+                              setQuantity(1);
+                            } else {
+                              setQuantity(value);
+                            }
+                          }}
+                          value={quantity}
+                          className='input input-bordered w-full'
+                        />
+                    </div>
+                  </Card.Body>
+
+                  <Card.Actions className="justify-center">
+                      <Web3Button
+                        accentColor="#5204BF"
+                        colorMode="dark"
+                        contractAddress={tokenAddress}
+                        action={(contract) => contract.erc20.claim(quantity)}
+                        onSuccess={() => alert("Claimed!")}
+                        onError={(err) => alert(err)}
+                        >
+                        {buttonText}
+                      </Web3Button>
+                  </Card.Actions>
+                  
+
+
+                </>
+              )}
+
+            
+          </Card>
+
+
 
       </section>
     );
