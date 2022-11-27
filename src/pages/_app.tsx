@@ -59,10 +59,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const { lat } = router.query as { lat: string };
   const { lon } = router.query as { lon: string };
   // console.log("-- router", router.query);
-  // console.log("-- country", country);
-  // console.log("-- city", city);
-  // console.log("-- lat", lat);
-  // console.log("-- lon", lon);
+  console.log("-- country: ", country);
+  console.log("-- city: ", city);
+  console.log("-- lat: ", lat);
+  console.log("-- lon: ", lon);
 
   useEffect(() => {
     // Init PostHog
