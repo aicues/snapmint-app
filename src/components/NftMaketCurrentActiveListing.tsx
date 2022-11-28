@@ -3,6 +3,7 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import { epochtoDateString, isEpochExpired,  isListingExpired, formatDisplayAddress } from "@utils/web3utils";
 import { getEtherscanURL } from "@config/targetChainConfig";
+import {targetChainId} from '@config/targetChainConfig';
 import { MediaRenderer, ThirdwebNftMedia, useContract, useContractMetadata, useNFTs, useNFT, useListings, useNetworkMismatch, useNetwork, useAddress, useSDK} from "@thirdweb-dev/react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
@@ -49,7 +50,7 @@ export const NftMaketCurrentActiveListing: React.FC<{
         return <div>No Data To Show</div>;
     }
 
-    const listing = listings[0];
+    const listing = listings[listings.length-1]; //get the last listing
     const listingExpired = isListingExpired(listing);
 
     
@@ -111,7 +112,7 @@ export const NftMaketCurrentActiveListing: React.FC<{
           }
           // Ensure user is on the correct network
           if (networkMismatch) {
-            switchNetwork && switchNetwork(ChainId.Mumbai);
+            switchNetwork && switchNetwork(targetChainId);
             return;
           }
 

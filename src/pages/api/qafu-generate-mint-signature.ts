@@ -62,9 +62,12 @@ export default async function qafuGenerateMintSignature(
       to: authorAddress,
       mintStartTime: new Date(0),
 
-      // price: 0.01, // the price per NFT
-      // currencyAddress: NATIVE_TOKEN_ADDRESS, // the currency to pay with
+      royaltyBps: 1000, // 10% royalty for the author,10%=1000bps 2.5% = 250bps and 100% = 10,000bps
+      royaltyRecipient: authorAddress, //  royalty recipient for this NFT
+      primarySaleRecipient: authorAddress, // primary sale recipient for this NFT  
 
+      currencyAddress: NATIVE_TOKEN_ADDRESS, // the currency to pay with
+      // price: 0.01, // the price per NFT
       // mintEndTime: new Date(Date.now() + 60 * 60 * 24 * 1000), // to 24h from now
       // quantity: 2, // the quantity of NFTs to mint
       // price: 0.5, // the price per NFT

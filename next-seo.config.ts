@@ -1,15 +1,32 @@
 import { DefaultSeoProps } from 'next-seo';
 
 const config: DefaultSeoProps = {
+  titleTemplate: 'Snapmint',
+  defaultTitle: 'Snapmint',
+  title: 'Snapmint',
+  description: 'NFT Marketplace and NFT Creator Platform',
+  canonical:'https://www.snapmint.io/',
+
   openGraph: {
-    type: 'website',
-    locale: 'en_IE',
+    title: 'Snapmint',
+    description: 'NFT Marketplace and NFT Creator Platform',
     url: 'https://www.snapmint.io/',
     siteName: 'Snapmint',
+    type: 'website',
+    locale: 'en',
+    images: [
+      {
+        url: 'https://www.snapmint.io/og/twitter-cover-1.png',
+        width: 1500,
+        height: 500,
+        alt: 'Snapmint',
+      },
+    ],
+    
   },
   twitter: {
     handle: '@snapmint_',
-    site: '@site',
+    site: '@snapmint_',
     cardType: 'summary_large_image',
   },
 };

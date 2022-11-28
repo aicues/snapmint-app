@@ -24,6 +24,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Button, Badge } from "react-daisyui";
+import {targetChainId} from '@config/targetChainConfig';
 
 // import { getNftMetadata, Nft, NftTokenType } from "@alch/alchemy-sdk";
 // import { alchemy } from "@config/alchemy";
@@ -207,8 +208,8 @@ const CreateListing: NextPage = (_props: InferGetStaticPropsType<typeof getStati
       return;
     }
 
-    if (price < 1.0) {
-      toast.error("Price cannot be less than 1.0 MATIC", {
+    if (price < 0.1) {
+      toast.error("Price cannot be less than 0.1 MATIC", {
         position: toast.POSITION.TOP_CENTER, toastId: "price-error"
       });
       return;
@@ -216,7 +217,7 @@ const CreateListing: NextPage = (_props: InferGetStaticPropsType<typeof getStati
 
     // Ensure user is on the correct network
     if (networkMismatch) {
-      switchNetwork && switchNetwork(ChainId.Mumbai);
+      switchNetwork && switchNetwork(targetChainId);
       return;
     }
 
@@ -240,8 +241,9 @@ const CreateListing: NextPage = (_props: InferGetStaticPropsType<typeof getStati
         setSubmitting(true);
 
         try {
-          const listtingFeesTX = await sdk?.wallet.transfer("0x86d5E895751Ade30355b97349D4B5b9e2319832F", listingFees, NATIVE_TOKEN_ADDRESS);
-          if (listtingFeesTX) {
+          // const listtingFeesTX = await sdk?.wallet.transfer("0x86d5E895751Ade30355b97349D4B5b9e2319832F", listingFees, NATIVE_TOKEN_ADDRESS);
+          // if (listtingFeesTX) {
+            if (true) {
             // await createAuctionListing(contractAddress, tokenId, price, minimumPrice, durationInSeconds);
             await createDirectListing(contractAddress, tokenId, price, durationInSeconds);
 

@@ -11,6 +11,8 @@ import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ReactDom from 'react-dom'
+import { NextSeo } from "next-seo";
+
 // import * from './index.md'
 // ts-ignore: md file and not a module
 import MarkdownSection from '@components/MarkdownSection'
@@ -28,6 +30,22 @@ const Index= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
     return (
         <>
+          <NextSeo 
+            title='Snapmint | Qafu Qatar'
+            description='Qafu Qatar is a collection of 10,000 unique NFTs on the Polygon Network. Each NFT is a unique digital collectible that can be used to represent a real-world asset. The NFTs are stored on the Polygon Network and can be viewed on the Snapmint website.'
+            canonical="https://www.snapmint.io/qafu-qatar"
+            openGraph={{
+              images: [
+                {
+                  url: 'https://www.snapmint.io/og/qq-hero-img-1.png',
+                  width: 799,
+                  height: 521,
+                  alt: 'Snapmint'
+                }
+              ],
+            }}
+           />
+
           <HeroQafuQatar />
 
           {/* <MarkdownSection background="bg-base-300" markdown={post} /> */}

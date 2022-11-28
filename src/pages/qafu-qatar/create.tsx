@@ -26,39 +26,44 @@ import {INftCreate} from "@models";
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { toast } from "react-toastify";
+import {targetChainId} from '@config/targetChainConfig';
 
 type Props = {
   // Add custom props here
   countryName: string,
   city: string,
-  isFreeGasCountry: string
+  isFreeGasCountry: string,
+  inQatar: string,
 }
 
 // const Create: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const CreateQafu: NextPage = (props: InferGetStaticPropsType<typeof getServerSideProps>) => {
 
-    // console.log("props:", props)
   // Translations
   const { t }= useTranslation('common');
 
   const myProps = props as Awaited<Props>// string
   // console.log(myProps.countryName);
-  // alert("Hello from " + myProps.country)
+  
+  // const [userMessage, setUserMessage] = useState("Hello from " + myProps.countryName + " " + myProps.city + " " + myProps.isFreeGasCountry);
+  const intialUserMessage1 = myProps.isFreeGasCountry==="true" ? t('wallet.free-gas-and-fees') : "";
+
+  const intialUserMessage = myProps.inQatar ==="true"
+    ? myProps.isFreeGasCountry==="true"
+      ? t('wallet.free-gas-and-fees') 
+      : "" 
+    : "Sorry, you are not in Qatar. You can not create NFTs here.";
+  const [userMessage, setUserMessage] = useState(intialUserMessage);
 
   const router = useRouter();
 
-  const { contract: nftCollection } = useContract(process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS, "nft-collection" );
-  // const { contract: marketplace } = useContract( process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT_ADDRESS, "marketplace" );
   const address = useAddress();
-   // Hooks to detect user is on the right network and switch them if they are not
-   const networkMismatch = useNetworkMismatch();
-   const [, switchNetwork] = useNetwork();
-
+  const networkMismatch = useNetworkMismatch();
+  const [, switchNetwork] = useNetwork();
+  const { contract: nftCollection } = useContract(process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS, "nft-collection" );
+  
   const { mutateAsync: upload } = useStorageUpload();
-
-
   const [submitting, setSubmitting] = useState(false);
-
   const [file, setFile] = useState<File>();
 
   // Magic to get the file upload even though its hidden
@@ -100,25 +105,20 @@ type Props = {
 
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork && switchNetwork(ChainId.Mumbai);
+        toast.error("Please switch your Wallet network to Ploygon !", {
+          position: toast.POSITION.TOP_CENTER, toastId: "wallet-network-mismatch"
+        });
+        switchNetwork && switchNetwork(targetChainId);
         return;
       }
 
-      
-
-      // De-construct data from form submission
-      //istingType,, price
-
-/*       console.log({
-        // listingType: listingType.value,
-        eeee: e.currentTarget.elements
-      }); */
 
       setSubmitting(true);
 
       const { name, description, traits } = data;
 
        // Upload image to IPFS using Storage
+       setUserMessage("Uploading media file...");
        const uris = await upload({ 
         data: [file], 
         // options: { uploadWithGatewayUrl: true, uploadWithoutDirectory: true },
@@ -139,6 +139,7 @@ type Props = {
       const traitsAsProperties = traits.reduce((acc, { name, value }) => ({ ...acc, [name]: value }), {});
 
 
+      setUserMessage("Creating your NFT in the Blockchain, this may take a while...");
       // Make a request to /api/qafu-generate-mint-signature
       const signedPayloadReq = await fetch(`/api/qafu-generate-mint-signature`, {
         method: "POST",
@@ -182,8 +183,8 @@ type Props = {
 
       // Redirect to the NFT page
       router.push(
-        `/market/create-listing/?contractAddress=${process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS}&tokenId=${mintedTokenId}`
-        // `/market/create-listing/?tokenId=${id}`
+        // `/market/create-listing/?contractAddress=${process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS}&tokenId=${mintedTokenId}`
+        `/qafu-qatar/create-thanks/?contractAddress=${process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS}&tokenId=${mintedTokenId}`
         // `/market/create-listing/${address}?tokenId=${id}`
       );
 
@@ -217,7 +218,7 @@ type Props = {
     defaultValues: {
       name: "",
       description: "",
-    traits: [{ name: "Country", value: myProps.countryName }, { name: "City", value: myProps.city }]
+    traits: [{ name: "Country", value: myProps.countryName }, { name: "City", value: myProps.city }, { name: "", value: "" }]
     } as INftCreate
   });
   // dynamic fields, ref: https://react-hook-form.com/api/usefieldarray/
@@ -382,25 +383,27 @@ type Props = {
 
               </tbody>
           </table>
-          <div className="grid place-items-end">
-            <button type="button" className="btn btn-ghost btn-sm"
+          <div className="flex flex-1 place-items-end">
+            {/* <Badge color={"secondary"} variant={"outline"} responsive size={"sm"} className="!p-0 !border-0 w-full justify-center">
+              Add more traits to increase the exposure of your NFT
+            </Badge> */}
+            <span className="text-xs text-secondary-focus justify-center w-full pb-2 px-2">Add more traits to increase the exposure of your NFT</span>
+            <button type="button" className="btn btn-secondary btn-sm"
             
               onClick={() => append({ name: "", value: ""})} >
                 {t('create-nft.meta-trait-add')}
             </button>
           </div>
         </div>
-        {myProps.isFreeGasCountry==="true" && (
-          <div className="w-full mb-6">
-            <Badge color={"accent"} variant={"outline"} responsive size={"lg"} className="p-2 w-full h-full rounded-md justify-start">
-              {t('wallet.free-gas-and-fees')}<br/> {"  0 "} {"⧫ MATIC"}
-            </Badge>
-            {/* <span className="!sm:p-4 badge badge-accent badge-outline badge-lg p-4">
-              {t('wallet.free-gas-and-fees')}, {"  "}⧫ {"0 MATIC"}</span> */}
-          </div>
-        )}
+        {/* User Message */}
+        <div className="w-full mb-2">
+          <Badge color={"accent"} variant={"outline"} responsive size={"lg"} className="!border-0 text-sm p-2 w-full h-full rounded-md justify-start">
+            {userMessage}
+          </Badge>
+        </div>
+        {/* Submit */}
         <Button type="submit" color={"accent"} fullWidth={true} responsive={true} active={true} animation={true} size={"md"}
-          loading={submitting} disabled={submitting}>
+          loading={submitting} disabled={submitting || (myProps.inQatar!=="true")}>
           {t('create-nft.submit-button')}
         </Button>
       </div>
@@ -418,7 +421,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ locale, qu
       props: {
           countryName: query?.countryName as string ,
           city: query?.city as string ,
-          isFreeGasCountry: query?.isFreeGasCountry as  string,
+          isFreeGasCountry: query?.isFreeGasCountry as string,
+          inQatar: query?.inQatar as string,
           ...trans,
       },
   }

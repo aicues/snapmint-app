@@ -3,7 +3,7 @@ import countries from '@utils/countries.json'
 
 // run only on homepage
 export const config = {
-  matcher: ['/', '/qafu-qatar/create','/tokens/sym', '/tokens/sym/claim']
+  matcher: ['/', '/qafu-qatar/create','/tokens/sym', '/tokens/sym/claim', '/market/create-listing']
 }
 
 export async function middleware(req: NextRequest) {
@@ -24,7 +24,7 @@ export async function middleware(req: NextRequest) {
   const freeGasCountries : string[] = ["QA", "AE", "SA", "US", "EG"] //, "US", "EG", "KW", "BH", "OM", "JO", "LB", "SY", "IQ", "YE", "PS", "IL", "TR", "CY", "GR", "RO", "BG", "MK", "AL", "RS", "ME", "BA", "HR", "SI", "AT", "CH", "DE", "NL", "BE", "LU", "FR", "ES", "PT", "AD", "MC", "SM", "VA", "IT", "LI", "MT", "PL", "SK", "CZ", "HU", "DK", "SE", "NO", "FI", "EE", "LV", "LT", "BY", "UA", "MD", "AM", "AZ", "GE", "KZ", "KG", "TJ", "TM", "UZ", "CN", "JP", "KR", "TW", "HK", "MO", "SG", "MY", "TH", "VN", "ID", "PH", "AU", "NZ", "FJ", "PG", "SB", "VU", "NC", "PF", "CK", "WS", "TO", "TV", "KI", "NU", "FM", "MH", "PW", "GU", "MP", "AS", "PR", "VI", "CA", "MX", "CR", "PA", "DO", "HT", "CU", "BS", "BB", "AG", "DM", "GD", "KN", "LC", "VC", "TT", "JM", "BZ", "SV", "HN", "NI", "GT", "BQ", "CW", "SX", "AW", "AI", "BM", "VG", "KY", "MS", "TC", "BM", "GL", "FO", "IS", "GB", "IE", "GG", "IM", "JE", "AX", "EE", "LV", "LT", "BY", "UA", "MD", "AM", "AZ", "GE", "KZ", "KG", "TJ", "TM", "UZ", "CN", "JP", "KR", "TW", "HK", "MO", "SG", "MY", "TH", "VN", "ID", "PH", "AU",
 
   const isFreeGasCountry = freeGasCountries.includes(country) ? "true" : "false";
-  const inQatar = country === "QA" ? "true" : "false";
+  const inQatar = country === "QA" || "US" ? "true" : "false";
 
   url.searchParams.set('country', country)
   url.searchParams.set('countryName', countryName)
