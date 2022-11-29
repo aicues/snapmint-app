@@ -54,6 +54,9 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
 
 
   const shareUrl = `https:/www.snapmint.io/assets/polygon/${process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS}/${tokenId}`
+  const shareText = `Qafu Qatar NFT #${tokenId} on Snapmint.io`;
+  const shareHashtags = `Qafu_Qatar, NFT, World_Cup, Snapmint`;
+  const shareVIa = `@snapmint_`;
 
 
   return (
@@ -67,21 +70,21 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
 
         {/* Tweet */}
         <Card className="bg-base-300 shadow-xl p-3">
-            <Card.Title className='justify-center pb-4'>
-              <h1 className="font-bold ">
-                Share on Twitter
-              </h1>
-            </Card.Title>
+          <Card.Title className='justify-center pb-4'>
+            <h1 className="font-bold ">
+              Share on Twitter
+            </h1>
+          </Card.Title>
 
-            <Card.Actions className="justify-center pb-4">
-              <Link className="btn w-[80%] btn-lg btn-info btn-xs md:btn-sm lg:btn-md xl:btn-lg"
-                href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${encodeURI("description")}`}
-                target="_blank"
-              >
-              Tweet
-              </Link>
-            </Card.Actions>
-          </Card>
+          <Card.Actions className="justify-center pb-4">
+            <Link className="btn w-[80%] btn-lg btn-info btn-xs md:btn-sm lg:btn-md xl:btn-lg"
+              href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${encodeURI(shareText)}&hashtags=${shareHashtags}&via=${shareVIa}`}
+              target="_blank"
+            >
+            Tweet
+            </Link>
+          </Card.Actions>
+        </Card>
 
           {/* Sell in Marketplace */}
           <Card className="bg-base-300 shadow-xl p-3">
