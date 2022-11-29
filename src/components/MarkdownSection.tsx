@@ -36,7 +36,11 @@ export const MarkdownSection: React.FC<{
           // Map `h1` (`# heading`) to use `h2`s.
           // h1: 'h2',
           h1: ({ node, ...props }) => 
-            <h1 className='text-primary-content text-lg' {...props} />,
+            <h1 className='text-red-500 text-3xl' {...props} />,
+          h2: ({ node, ...props }) => 
+            <h2 className='text-green-500 text-xl' {...props} />,
+          p: ({ node, ...props }) => 
+            <p className='py-4' {...props} />,
           // Rewrite `em`s (`*like so*`) to `i` with a red foreground color.
           em: ({ node, ...props }) => 
             <i style={{ color: 'red' }} {...props} />

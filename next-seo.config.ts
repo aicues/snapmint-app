@@ -16,7 +16,7 @@ const config: DefaultSeoProps = {
     locale: 'en',
     images: [
       {
-        url: 'https://www.snapmint.io/og/twitter-cover-1.png',
+        url: 'https://www.snapmint.io/og/twitter-cover-2.png',
         width: 1500,
         height: 500,
         alt: 'Snapmint',
