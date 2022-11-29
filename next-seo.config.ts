@@ -17,8 +17,8 @@ const config: DefaultSeoProps = {
     images: [
       {
         url: 'https://www.snapmint.io/og/twitter-cover-2.png',
-        width: 1500,
-        height: 500,
+        width: 876,
+        height: 438,
         alt: 'Snapmint',
       },
     ],
