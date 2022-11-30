@@ -52,7 +52,8 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
   const { tokenId } = router.query as { tokenId: string };
   const { contractAddress } = router.query as { contractAddress: string };
 
-
+  // Tweet
+  // https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview
   const shareUrl = `https:/www.snapmint.io/assets/polygon/${process.env.NEXT_PUBLIC_COLLECTION_QAFU_ADDRESS}/${tokenId}`
   const shareText = `Qafu Qatar NFT #${tokenId} on Snapmint.io`;
   const shareHashtags = `Qafu_Qatar, NFT, World_Cup, Snapmint`;
