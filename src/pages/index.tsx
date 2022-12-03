@@ -27,6 +27,11 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     // <><Home_V1/></>
     <section className="flex flex-col place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
+      <div className="grid w-full place-items-center pb-6">
+        <h1 className="text-primary text-2xl sm:text-lg lg:text-2xl">
+          Create, Collect, and Sell NFTs
+        </h1>
+      </div>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
         {/* <svg className="fill-secondary h-auto w-full" width="1600" height="595" viewBox="0 0 1600 595" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 338L53.3 349.2C106.7 360.3 213.3 382.7 320 393.8C426.7 405 533.3 405 640 359.3C746.7 313.7 853.3 222.3 960 189.2C1066.7 156 1173.3 181 1280 159.2C1386.7 137.3 1493.3 68.7 1546.7 34.3L1600 0V595H1546.7C1493.3 595 1386.7 595 1280 595C1173.3 595 1066.7 595 960 595C853.3 595 746.7 595 640 595C533.3 595 426.7 595 320 595C213.3 595 106.7 595 53.3 595H0V338Z"></path></svg> */}
@@ -40,7 +45,7 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 Qafu Qatar
               </h1>
               <h4 className="text-primary/80 text-sm mb-2">
-                Commuunity generated NFT collection
+                Community generated NFT collection
               </h4>
             </Card.Body>
             <Card.Actions className="justify-center">

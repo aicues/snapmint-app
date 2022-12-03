@@ -20,18 +20,18 @@ const HeroSym: React.FC<{
     }> = ({ isFreeGasCountry}) => {
     const { t } = useTranslation('common');
 
-    // const amountToClaim = BigNumber.from(15_000_000_000);
-    const amountToClaim = BigNumber.from(20_000);
+    const amountToClaim = BigNumber.from(15_000_000_000);
+    // const amountToClaim = BigNumber.from(20_000);
 
 
     const tokenAddress = process.env.NEXT_PUBLIC_TOKEN_DROP_SYM_ADDRESS
    
     const balance = useBalance(tokenAddress);
     // const canClaim = isFreeGasCountry==='true' && balance?.data?.value.lt(amountToClaim);
-    const canClaim = balance?.data?.value.lt(amountToClaim);
-    // console.log("-- balance ", balance?.data?.displayValue);
-    // console.log("-- canClaim ", canClaim);
-    // console.log("-- amountToClaim ", amountToClaim.toString())
+    const canClaim = true;// balance?.data?.value.lt(amountToClaim);
+    console.log("-- balance ", balance?.data?.displayValue);
+    console.log("-- canClaim ", canClaim);
+    console.log("-- amountToClaim ", amountToClaim.toString())
 
     return (
         <Hero 
@@ -64,8 +64,9 @@ const HeroSym: React.FC<{
                                         <><span>You are eligable to claim {amountToClaim.toString()} Sym Tokens for free</span></>
                                         
                                     ):(
-                                        <><span>You already claimed your {balance?.data?.displayValue} free Sym Tokens</span></>
-                                    )}
+                                        <><span>You already claimed your {balance?.data?.displayValue} free Sym Tokens!</span></>
+                                    )
+                                    }
                                 </li>
                                 {/* <li data-content="2" className="step after:!w-6 after:!h-6 !min-h-8">{t('sym.step-2')}</li>
                                 <li data-content="3" className="step after:!w-6 after:!h-6 !min-h-8">{t('sym.step-3')}</li> */}
