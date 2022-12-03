@@ -21,15 +21,15 @@ const HeroSym: React.FC<{
     const { t } = useTranslation('common');
 
     // const amountToClaim = BigNumber.from(15_000_000_000);
-    const amountToClaim = BigNumber.from(14_999_980_000);
-    // const amountToClaim = BigNumber.from(20_000);
+    // const amountToClaim = BigNumber.from(14_999_980_000);
+    const amountToClaim = BigNumber.from(20_000);
 
 
     const tokenAddress = process.env.NEXT_PUBLIC_TOKEN_DROP_SYM_ADDRESS
    
     const balance = useBalance(tokenAddress);
     // const canClaim = isFreeGasCountry==='true' && balance?.data?.value.lt(amountToClaim);
-    const canClaim = true;//balance?.data?.value.lt(amountToClaim);
+    const canClaim = balance?.data?.value.lt(amountToClaim);
     // console.log("-- balance ", balance?.data?.displayValue);
     // console.log("-- canClaim ", canClaim);
     // console.log("-- amountToClaim ", amountToClaim.toString())
