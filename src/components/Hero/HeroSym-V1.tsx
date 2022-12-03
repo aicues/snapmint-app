@@ -20,7 +20,8 @@ const HeroSym: React.FC<{
     }> = ({ isFreeGasCountry}) => {
     const { t } = useTranslation('common');
 
-    const amountToClaim = BigNumber.from(15_000_000_000);
+    // const amountToClaim = BigNumber.from(15_000_000_000);
+    const amountToClaim = BigNumber.from(14_999_980_000);
     // const amountToClaim = BigNumber.from(20_000);
 
 
@@ -28,10 +29,10 @@ const HeroSym: React.FC<{
    
     const balance = useBalance(tokenAddress);
     // const canClaim = isFreeGasCountry==='true' && balance?.data?.value.lt(amountToClaim);
-    const canClaim = true;// balance?.data?.value.lt(amountToClaim);
-    console.log("-- balance ", balance?.data?.displayValue);
-    console.log("-- canClaim ", canClaim);
-    console.log("-- amountToClaim ", amountToClaim.toString())
+    const canClaim = true;//balance?.data?.value.lt(amountToClaim);
+    // console.log("-- balance ", balance?.data?.displayValue);
+    // console.log("-- canClaim ", canClaim);
+    // console.log("-- amountToClaim ", amountToClaim.toString())
 
     return (
         <Hero 
