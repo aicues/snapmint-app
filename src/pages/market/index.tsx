@@ -35,6 +35,7 @@ import Loader from '@components/Loader';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import {Card, Button, Table, Avatar} from "react-daisyui";
 import { useTranslation } from "next-i18next";
+import { NextSeo } from "next-seo";
 
 type Props = {
     // Add custom props here
@@ -70,38 +71,51 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
 
 
   return (
-    <section className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
-      <div className="p-4 container mx-auto">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
-        {!isLoading ?
-          (
-            <>
-            {data?.map((listing: AuctionListing | DirectListing ) => {
-              return (
-                  <NftCard 
-                    key={listing.id}
-                    image={listing.asset?.image ?? ""} 
-                    tokenId={listing.asset.id}
-                    listingId={listing.id}
-                    description={listing.asset?.description ?? ""}
-                    title={listing.asset?.name as string?? ""}
-                    contractAddress={listing.assetContractAddress}
-                    buyoutPrice={`${hexToETH(listing.buyoutPrice)} ⧫ ${listing.buyoutCurrencyValuePerToken.symbol}`}
-                    ownerAddress={listing.sellerAddress} //?
-                    >
-                    <>
-                    </>
-                  </NftCard>
-              );
-            })}
-            </>
-          ) : (
-            <div><button className="btn btn-ghost loading btn-lg btn-circle"/><span>{t('fetch.loading')}</span></div>
-          )}
+    <><NextSeo
+      title='Snapmint | Qafu Qatar'
+      description='Qafu Qatar is a collection of 10,000 unique NFTs on the Polygon Network. Each NFT is a unique digital collectible that can be used to represent a real-world asset. The NFTs are stored on the Polygon Network and can be viewed on the Snapmint website.'
+      canonical="https://www.snapmint.io/qafu-qatar"
+      openGraph={{
+        images: [
+          {
+            url: 'https://www.snapmint.io/og/facebook-og-1.png',
+            width: 1200,
+            height: 630,
+            alt: 'Snapmint'
+          }
+        ],
+      }} /><section className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
+        <div className="p-4 container mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
+            {!isLoading ?
+              (
+                <>
+                  {data?.map((listing: AuctionListing | DirectListing) => {
+                    return (
+                      <NftCard
+                        key={listing.id}
+                        image={listing.asset?.image ?? ""}
+                        tokenId={listing.asset.id}
+                        listingId={listing.id}
+                        description={listing.asset?.description ?? ""}
+                        title={listing.asset?.name as string ?? ""}
+                        contractAddress={listing.assetContractAddress}
+                        buyoutPrice={`${hexToETH(listing.buyoutPrice)} ⧫ ${listing.buyoutCurrencyValuePerToken.symbol}`}
+                        ownerAddress={listing.sellerAddress} //?
+                      >
+                        <>
+                        </>
+                      </NftCard>
+                    );
+                  })}
+                </>
+              ) : (
+                <div><button className="btn btn-ghost loading btn-lg btn-circle" /><span>{t('fetch.loading')}</span></div>
+              )}
 
+          </div>
         </div>
-      </div>
-    </section>
+      </section></>
   );
 
 

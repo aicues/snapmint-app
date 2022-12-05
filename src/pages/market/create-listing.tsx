@@ -359,7 +359,7 @@ const CreateListing: NextPage = (props: InferGetStaticPropsType<typeof getServer
             </li>
             <li key="fees" className="form-control w-full pt-6">
               <Badge color={"accent"} variant={"outline"} responsive size={"lg"} className="p-2 w-full h-full rounded-md justify-start">
-                Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas, "} {myProps.isFreeGasCountry}
+                Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas fees"}
               </Badge>
               {/* <span className="badge badge-accent badge-outline badge-lg p-4">Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas"}</span> */}
             </li>
@@ -385,7 +385,6 @@ const CreateListing: NextPage = (props: InferGetStaticPropsType<typeof getServer
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async ({ locale, query }) => {
-  // export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
     const trans = await serverSideTranslations(locale ?? "en", ["common"]);
     // console.log("LOCAL", locale);
     return {
