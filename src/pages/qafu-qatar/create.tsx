@@ -194,7 +194,7 @@ type Props = {
       toast.error("An error occurred trying to mint the NFT, Please Try Again !", {
         position: toast.POSITION.TOP_CENTER, toastId: "mint-error"
       });
-      // console.error("An error occurred trying to mint the NFT:", e);
+      console.error("An error occurred trying to mint the NFT:", e);
     }
   };
 
@@ -403,7 +403,8 @@ type Props = {
         </div>
         {/* Submit */}
         <Button type="submit" color={"accent"} fullWidth={true} responsive={true} active={true} animation={true} size={"md"}
-          loading={submitting} disabled={submitting || (myProps.inQatar!=="true")}>
+          loading={submitting} 
+          disabled={submitting || (myProps.inQatar!=="true")}>
           {t('create-nft.submit-button')}
         </Button>
       </div>

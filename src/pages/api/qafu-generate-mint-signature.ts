@@ -1,6 +1,9 @@
 import { NATIVE_TOKEN_ADDRESS, ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { AwsKmsWallet } from "@thirdweb-dev/sdk/evm/wallets";
 import type { NextApiRequest, NextApiResponse } from "next";
 import {targetChainString} from '@config/targetChainConfig';
+import { AwsKmsSigner } from "ethers-aws-kms-signer";
+import { GetSecretValueCommand, SecretsManagerClient } from "@aws-sdk/client-secrets-manager";
 // import animalNames from "../../animalNames";
 // import "../styles/globals.css";
 
@@ -18,20 +21,41 @@ export default async function qafuGenerateMintSignature(
     console.log("--nftName", nftName);
     // console.log("--imagePath", imagePath);
 
+    // AWS Secerts Manager, this incures a cost
+    // const secret_name = "Mumbai_Private_Key_Test";
+    // const client = new SecretsManagerClient({
+    //   region: "eu-central-1",
+    // });
+    // const response = await client.send(
+    //   new GetSecretValueCommand({
+    //     SecretId: secret_name,
+    //     VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
+    //   })
+    // );
+    // const secret = response.SecretString;
+    // console.log("---- secret", secret);
     
 
+    // AWS KMS Wallet, gets generated private key from AWS KMS, how to use this with our own private key?
+    // const wallet = new AwsKmsWallet({
+    //   region: process.env.AWS_REGION,
+    //   keyId: process.env.AWS_ACCESS_KEY_ARN,
+    //   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    //   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    // });
+    // const sdk1 = await ThirdwebSDK.fromWallet(
+    //   wallet, 
+    //   targetChainString
+    // );
+    // const address = await (await wallet.getSigner()).getAddress();
+    // console.log("-- address:: ", address);
 
-
-
-    // You'll need to add your private key in a .env.local file in the root of your project
-    // !!!!! NOTE !!!!! NEVER LEAK YOUR PRIVATE KEY to anyone!
+    // Lets's stick with the envairoment variable for now
     if (!process.env.PRIVATE_KEY) {
       throw new Error("You're missing PRIVATE_KEY in your .env.local file.");
     }
 
-    // Initialize the Thirdweb SDK on the serverside
     const sdk = ThirdwebSDK.fromPrivateKey(
-      // Your wallet private key (read it in from .env.local file)
       process.env.PRIVATE_KEY as string, 
       targetChainString
     );
@@ -98,7 +122,7 @@ export default async function qafuGenerateMintSignature(
       signedPayload: JSON.parse(JSON.stringify(signedPayload)),
     });
   } catch (e) {
-    console.log(`Server error ${e}`);
+    console.log(`-- Server error ${e}`);
     res.status(500).json({ error: `Server error ${e}` });
   }
 }
