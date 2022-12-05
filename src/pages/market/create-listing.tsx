@@ -19,7 +19,7 @@ import {
   NATIVE_TOKENS,
   TransactionResultWithId,
 } from "@thirdweb-dev/sdk";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -48,9 +48,14 @@ import { useTranslation } from "next-i18next";
 
 type Props = {
   // Add custom props here
+  countryName: string,
+  city: string,
+  isFreeGasCountry: string,
+  inQatar: string,
 }
 
-const CreateListing: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+// const CreateListing: NextPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const CreateListing: NextPage = (props: InferGetStaticPropsType<typeof getServerSideProps>) => {
 
   // Translations
   const { t } = useTranslation('common');
@@ -378,13 +383,28 @@ const CreateListing: NextPage = (_props: InferGetStaticPropsType<typeof getStati
 
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
-  const trans = await serverSideTranslations(locale ?? "en", ["common"]);
-  return {
-    props: {
-      ...trans,
-    },
+export const getServerSideProps: GetServerSideProps<Props> = async ({ locale, query }) => {
+  // export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+    const trans = await serverSideTranslations(locale ?? "en", ["common"]);
+    // console.log("LOCAL", locale);
+    return {
+        props: {
+            countryName: query?.countryName as string ,
+            city: query?.city as string ,
+            isFreeGasCountry: query?.isFreeGasCountry as string,
+            inQatar: query?.inQatar as string,
+            ...trans,
+        },
+    }
   }
-}
+
+// export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+//   const trans = await serverSideTranslations(locale ?? "en", ["common"]);
+//   return {
+//     props: {
+//       ...trans,
+//     },
+//   }
+// }
 
 export default CreateListing;
