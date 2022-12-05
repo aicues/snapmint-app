@@ -138,7 +138,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   else return (
 
-      <ThirdwebProvider desiredChainId={activeChainId} dAppMeta={snapmintMetaData}>
+      <ThirdwebProvider desiredChainId={activeChainId} dAppMeta={snapmintMetaData}
+          sdkOptions={{
+            gasless: {
+              openzeppelin: {
+                relayerUrl: process.env.NEXT_PUBLIC_OPENZEPPELIN_URL,
+              },
+            },
+          }}
+      
+      >
         {head}
         <Layout>
           <>
