@@ -84,7 +84,8 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
             alt: 'Snapmint'
           }
         ],
-      }} /><section className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
+      }} />
+      <section className="bg-base-200 flex flex-col md:flex-row sm:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
         <div className="p-4 container mx-auto">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
             {!isLoading ?
