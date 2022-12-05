@@ -3,7 +3,7 @@ import countries from '@utils/countries.json'
 
 // run only on homepage
 export const config = {
-  matcher: ['/', '/qafu-qatar/create','/tokens/sym', '/tokens/sym/claim', '/market/create-listing']
+  matcher: ['/market/create-listing', '/qafu-qatar/create','/tokens/sym', '/tokens/sym/claim'] //  '/', 
 }
 
 export async function middleware(req: NextRequest) {

@@ -60,6 +60,7 @@ const CreateListing: NextPage = (props: InferGetStaticPropsType<typeof getServer
   // Translations
   const { t } = useTranslation('common');
   const router = useRouter();
+  const myProps = props as Awaited<Props>// string
 
   // De-construct listingId out of the router.query.
   // This means that if the user visits /listing/0 then the listingId will be 0.
@@ -358,7 +359,7 @@ const CreateListing: NextPage = (props: InferGetStaticPropsType<typeof getServer
             </li>
             <li key="fees" className="form-control w-full pt-6">
               <Badge color={"accent"} variant={"outline"} responsive size={"lg"} className="p-2 w-full h-full rounded-md justify-start">
-                Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas"}
+                Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas, "} {myProps.isFreeGasCountry}
               </Badge>
               {/* <span className="badge badge-accent badge-outline badge-lg p-4">Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas"}</span> */}
             </li>
