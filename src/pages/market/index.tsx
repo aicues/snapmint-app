@@ -73,7 +73,7 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
   return (
     <><NextSeo
       title='Snapmint | Qafu Qatar'
-      description='Qafu Qatar NFT digital collectibles'
+      description='Qafu Qatar NFT digital Collectibles'
       canonical="https://www.snapmint.io/market"
       openGraph={{
         images: [
