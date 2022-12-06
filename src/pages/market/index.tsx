@@ -73,12 +73,12 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
   return (
     <><NextSeo
       title='Snapmint | Qafu Qatar'
-      description='Qafu Qatar is a collection of unique NFTs on the Polygon Network. Each NFT is a unique digital collectible that can be used to represent a real-world asset. The NFTs are stored on the Polygon Network and can be viewed on the Snapmint website.'
+      description='Qafu Qatar NFT digital collectibles'
       canonical="https://www.snapmint.io/market"
       openGraph={{
         images: [
           {
-            url: 'https://www.snapmint.io/og/facebook-og-1.png',
+            url: 'https://www.snapmint.io/og/facebook-og-1-min.png',
             width: 1200,
             height: 630,
             alt: 'Snapmint'
