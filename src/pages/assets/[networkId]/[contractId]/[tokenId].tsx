@@ -105,21 +105,21 @@ const Asset: NextPage = (_props: InferGetStaticPropsType<typeof getServerSidePro
 
     return (
     <>
-        {/* <NextSeo 
-            title='Snapmint | Qafu Qatar'
-            description='Qafu Qatar is a collection of 10,000 unique NFTs on the Polygon Network. Each NFT is a unique digital collectible that can be used to represent a real-world asset. The NFTs are stored on the Polygon Network and can be viewed on the Snapmint website.'
-            canonical="https://www.snapmint.io/qafu-qatar"
+         <NextSeo 
+            title='Snapmint'
+            description={nft?.metadata?.description}
+            canonical={`https://www.snapmint.io/assets/polygon/${contractId}/${tokenId}`}
             openGraph={{
               images: [
                 {
-                  url: 'https://www.snapmint.io/og/qq-hero-img-1.png',
-                  width: 799,
-                  height: 521,
+                  url: `${nft?.metadata?.image}`,
+                  width: 800,
+                  height: 800,
                   alt: 'Snapmint'
                 }
               ],
             }}
-           /> */}
+           /> 
           
         <section className="bg-base-200 flex flex-col md:flex-row lg:flex-row place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max w-full container mx-auto">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 w-full">
