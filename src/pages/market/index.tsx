@@ -78,7 +78,7 @@ const Home:  NextPage = (_props: InferGetStaticPropsType<typeof getStaticProps>)
       openGraph={{
         images: [
           {
-            url: 'https://www.snapmint.io/og/facebook-og-3.png',
+            url: 'https://www.snapmint.io/og/facebook-og-4.png',
             width: 1200,
             height: 630,
             alt: 'Snapmint'
