@@ -132,6 +132,7 @@ const Asset: NextPage = (_props: InferGetStaticPropsType<typeof getServerSidePro
                             className="rounded-box"
                         />
                     </figure>
+                    <div>{nft?.metadata?.image}</div>
                 </Card>
                 {/* 2. NFT Info & Price Card ----------------------------- */}
                 <Card  bordered={true} className={cardClassName}>
