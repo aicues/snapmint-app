@@ -7918,14 +7918,14 @@ html {
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
-.border-primary {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--p) / var(--tw-border-opacity));
-}
-
 .border-base-300 {
   --tw-border-opacity: 1;
   border-color: hsl(var(--b3, var(--b2)) / var(--tw-border-opacity));
+}
+
+.border-primary {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
 }
 
 .border-base-100 {
@@ -8144,9 +8144,9 @@ html {
   line-height: 2rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .text-base {
@@ -8154,9 +8154,9 @@ html {
   line-height: 1.5rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .\!text-xs {
@@ -8243,6 +8243,19 @@ html {
   color: hsl(var(--bc) / var(--tw-text-opacity));
 }
 
+.text-primary-focus\/60 {
+  color: hsl(var(--pf, var(--p)) / 0.6);
+}
+
+.text-accent\/80 {
+  color: hsl(var(--a) / 0.8);
+}
+
+.text-accent {
+  --tw-text-opacity: 1;
+  color: hsl(var(--a) / var(--tw-text-opacity));
+}
+
 .text-base-200 {
   --tw-text-opacity: 1;
   color: hsl(var(--b2, var(--b1)) / var(--tw-text-opacity));
@@ -8261,16 +8274,6 @@ html {
 .text-secondary-focus {
   --tw-text-opacity: 1;
   color: hsl(var(--sf, var(--s)) / var(--tw-text-opacity));
-}
-
-.text-secondary {
-  --tw-text-opacity: 1;
-  color: hsl(var(--s) / var(--tw-text-opacity));
-}
-
-.text-accent {
-  --tw-text-opacity: 1;
-  color: hsl(var(--a) / var(--tw-text-opacity));
 }
 
 .text-primary-content {
@@ -8303,8 +8306,17 @@ html {
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
+.text-secondary {
+  --tw-text-opacity: 1;
+  color: hsl(var(--s) / var(--tw-text-opacity));
+}
+
 .text-white\/60 {
   color: rgb(255 255 255 / 0.6);
+}
+
+.text-accent\/90 {
+  color: hsl(var(--a) / 0.9);
 }
 
 .underline {
@@ -8641,12 +8653,12 @@ html {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-6 {

@@ -56,6 +56,8 @@ const Asset: NextPage = (_props: InferGetStaticPropsType<typeof getServerSidePro
         : [properties]
     : undefined;
 
+    // console.log("properties", nft);
+
     // const propertiesUl = arrayOfProperties?.map((obj, index) => (
     //     <ul key={index}>
     //       {Object.entries(obj).map(([key, value], index) => (
@@ -67,7 +69,7 @@ const Asset: NextPage = (_props: InferGetStaticPropsType<typeof getServerSidePro
     //   ))
 
       const propertiesTable = arrayOfProperties?.map((obj, index) => (
-        <Table key={index} compact={true} className="w-full text-secondary [&>tr>th]:px-0 [&>tr>th]:py-0.5 [&>tr>td]:py-0.5 [&>tr>th>span]:text-base-content text-xs [&>tr>th]:bg-transparent [&>tr>td]:bg-transparent">
+        <Table key={index} compact={true} className="w-full text-primary-focus/60 [&>tr>th]:px-0 [&>tr>th]:py-0.5 [&>tr>td]:py-0.5 [&>tr>th>span]:text-base-content text-xs [&>tr>th]:bg-transparent [&>tr>td]:bg-transparent">
             <Table.Head>
                 <span className="w-1/3">Trait</span>
                 <span className="w-2/3">Value</span>
@@ -132,7 +134,7 @@ const Asset: NextPage = (_props: InferGetStaticPropsType<typeof getServerSidePro
                             className="rounded-box"
                         />
                     </figure>
-                    <div>{nft?.metadata?.image}</div>
+                    {/* <div>{nft?.metadata?.image}</div> */}
                 </Card>
                 {/* 2. NFT Info & Price Card ----------------------------- */}
                 <Card  bordered={true} className={cardClassName}>

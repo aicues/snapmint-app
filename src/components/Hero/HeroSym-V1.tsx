@@ -6,7 +6,7 @@ import {Hero, Card, Table, Button} from "react-daisyui";
 
 import HeroImg from '@public/images/sym-hero-img-2.png'
 import HeroBg from '@public/images/qq-hero-bg-1.png'
-import { useBalance, Web3Button } from '@thirdweb-dev/react';
+import { useAddress, useBalance, Web3Button } from '@thirdweb-dev/react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import router from 'next/router';
@@ -23,6 +23,8 @@ const HeroSym: React.FC<{
     // const amountToClaim = BigNumber.from(15_000_000_000);
     // const amountToClaim = BigNumber.from(14_999_980_000);
     const amountToClaim = BigNumber.from(20_000);
+
+    const address = useAddress();
 
 
     const tokenAddress = process.env.NEXT_PUBLIC_TOKEN_DROP_SYM_ADDRESS
@@ -60,7 +62,7 @@ const HeroSym: React.FC<{
                             <ul className="steps steps-vertical text-lg text-white">
                                 {/* https://github.com/saadeghi/daisyui/issues/825#issuecomment-1141952076 */}
                                 <li>
-                                    {canClaim ? (
+                                    {canClaim || !address ? (
                                         
                                         <><span>You are eligable to claim {amountToClaim.toString()} Sym Tokens for free</span></>
                                         

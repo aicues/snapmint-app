@@ -29,7 +29,7 @@ const HeroQafuQatar = function HeroQafuQatar() {
                             {/* <h1 className="font-extrabold text-4xl sm:text-5xl lg:text-7xl mb-2">
                                 {t('qafu.title')}
                             </h1> */}
-                            <h4 className="text-white/60 font-extrabold text-lg sm:text-2xl lg:text-3xl">
+                            <h4 className="text-accent font-bold text-lg sm:text-xl lg:text-2xl">
                                 {t('qafu.sub-title')}
                             </h4>
                         </Card.Title>
@@ -46,9 +46,11 @@ const HeroQafuQatar = function HeroQafuQatar() {
                                 <Button responsive animation color={"accent"} size={"lg"} href="/qafu-qatar/create">
                                     {t('qafu.cta-button')}
                                 </Button>
-                                <Button responsive animation color={"ghost"}  variant={"outline"} size={"lg"} href="/qafu-qatar/info">
+
+                                {/* <Button responsive animation color={"ghost"}  variant={"outline"} size={"lg"} href="/qafu-qatar/info">
                                     {t('qafu.info-button')}
                                 </Button>
+                                 */}
                                 </div>
                             </Card.Actions>
                         </Card.Body>

@@ -38,6 +38,12 @@ const MyAssets: NextPage = (_props: InferGetStaticPropsType<typeof getStaticProp
                 displayCTA={true}
                 />
             {/* <p></p> */}
+            <NftCollectionOwned
+                ownerAddress={userAddress as string}
+                collectionAddress={process.env.NEXT_PUBLIC_NFT_DROP_MONDO_ADDRESS as string}
+                columns={6}
+                displayCTA={true}
+                />
         </section>
 
     );
