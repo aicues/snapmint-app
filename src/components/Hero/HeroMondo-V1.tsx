@@ -109,8 +109,8 @@ const HeroMondo: React.FC<{
                                             const tx = await contract.erc721.claim(1);
                                             if(tx) {
                                               const claimedTokenId = tx[0].id;
-                                              console.log("result", tx);
-                                              console.log("claimedTokenId", claimedTokenId);
+                                            //   console.log("result", tx);
+                                            //   console.log("claimedTokenId", claimedTokenId);
                                               
                                               setQuantity(1);
                                                 toast.success("Congratulations, You now own 1 Mondo NFT", {

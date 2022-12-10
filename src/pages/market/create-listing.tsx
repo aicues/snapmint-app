@@ -357,12 +357,12 @@ const CreateListing: NextPage = (props: InferGetStaticPropsType<typeof getServer
                 ))}
               </select>
             </li>
-            <li key="fees" className="form-control w-full pt-6">
+            {/* <li key="fees" className="form-control w-full pt-6">
               <Badge color={"accent"} variant={"outline"} responsive size={"lg"} className="p-2 w-full h-full rounded-md justify-start">
                 Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas fees"}
-              </Badge>
+              </Badge> */}
               {/* <span className="badge badge-accent badge-outline badge-lg p-4">Listing fees: {listingFees}{"  "}⧫ {" MATIC + gas"}</span> */}
-            </li>
+            {/* </li> */}
             {/* Submit */}
             <li key="submit" className="form-control w-full py-4">
               {/* <button className="btn btn-primary w-full" onClick={create}>List</button> */}

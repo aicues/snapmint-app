@@ -95,18 +95,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     logoUrl: 'https://www.snapmint.io/logo.svg',
     isDarkMode: true
   }
-  const head = (
-    <Head>
-    <title>Snapmint | </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="xxx" />
-    <meta
-      name="keywords"
-      content="Marketplace, NFT Marketplace, NFT Auction" />
-  </Head>
-  );
+  // const head = (
+  //   <Head>
+  //   <title>Snapmint | </title>
+  //   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  //   <meta
+  //     name="description"
+  //     content="xxx" />
+  //   <meta
+  //     name="keywords"
+  //     content="Marketplace, NFT Marketplace, NFT Auction" />
+  // </Head>
+  // );
 
   // console.log("-- isFreeGasCountry: ", isFreeGasCountry);
 
@@ -123,7 +123,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           },
         }}
     >
-      {head}
+      {/* {head} */}
       <Layout>
         <>
           <GoogleAnalytics trackPageViews gaMeasurementId='G-7TJ8RVN4FJ' />
@@ -139,7 +139,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   else return (
 
       <ThirdwebProvider desiredChainId={activeChainId} dAppMeta={snapmintMetaData}>
-        {head}
+        {/* {head} */}
         <Layout>
           <>
             <GoogleAnalytics trackPageViews gaMeasurementId='G-7TJ8RVN4FJ' />

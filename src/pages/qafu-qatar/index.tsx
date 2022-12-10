@@ -37,9 +37,9 @@ const Index= (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
             openGraph={{
               images: [
                 {
-                  url: 'https://www.snapmint.io/og/qq-hero-img-1.png',
-                  width: 799,
-                  height: 521,
+                  url: 'https://www.snapmint.io/og/twitter-adv-1.png',
+                  width: 800,
+                  height: 418,
                   alt: 'Snapmint'
                 }
               ],
