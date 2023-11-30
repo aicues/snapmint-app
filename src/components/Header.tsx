@@ -16,7 +16,7 @@ export default function Header() {
           <Link href="/" passHref role="button">
             <img
               src={`/logo.png`}
-              alt="Thirdweb Logo"
+              alt="AI Cues Logo"
               width={135}
               style={{ cursor: "pointer" }}
             />
