@@ -4,7 +4,7 @@ export default function Footer() {
         <footer className="footer p-10 bg-base-300 text-base-content">
   <div>
     {/* <Logo className='inline-block h-12 w-12 fill-current m-0 md:h-10 md:w-10 sm:h-8 sm:w-8'/> */}
-    <p>SNAPMINT © 2022</p>
+    <p>AI Cues © 2023</p>
   </div> 
   {/* <div>
     <span className="footer-title">Services</span> 

@@ -29,7 +29,7 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <section className="flex flex-col place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
       <div className="grid w-full place-items-center pb-6">
         <h1 className="text-primary text-2xl sm:text-lg lg:text-2xl">
-          Democratising AI Services, Cues for everyone.
+          Lets Create, Collect, and Sell NFTs
         </h1>
       </div>
       <div className="container mx-auto">
@@ -38,20 +38,20 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
           <Card compact className="bg-base-200 shadow-xl glass">
             <Card.Image className='p-0 object-scale-down h-full w-full'
                 src={QafuImg.src}
-                alt="Query for Prompts"
+                alt="Qafu Qatar"
             />
             <Card.Body className='place-items-center !p-0'>
               <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl">
-              Query Prompts
+                Qafu Qatar
               </h1>
               <h4 className="text-primary/80 text-sm mb-2">
-                Find best prompts for your needs, mint as NFT
+                Community generated NFT collection
               </h4>
             </Card.Body>
             <Card.Actions className="justify-center">
                     <Button color={'accent'} variant={'outline'} size={"sm"} className=" w-[80%] mb-4"
-                      onClick={() => { router.push(`/`); }}>
-                      Soon!
+                      onClick={() => { router.push(`/qafu-qatar/`); }}>
+                      Mint Now for free
                     </Button>
             </Card.Actions>
           </Card>
@@ -60,20 +60,20 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
             {/* <Card.Title>h2</Card.Title> */}
             <Card.Image className='p-0 object-scale-down h-full w-full'
                 src={SymImg.src}
-                alt="Sell Prompts"
+                alt="Sym Token"
             />            
             <Card.Body className='place-items-center !p-0'>
               <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl">
-              Sell Prompts
+                Sym Token
               </h1>
               <h4 className="text-primary/80 text-sm mb-2">
-                Prompt Creator, Sell/Rent your prompts.
+                Airdropping Now
               </h4>
             </Card.Body>
             <Card.Actions className="justify-center">
                     <Button color={'accent'} variant={'outline'} size={"sm"} className=" w-[80%] mb-4"
-                      onClick={() => { router.push(`/`); }}>
-                      Soon!
+                      onClick={() => { router.push(`/tokens/sym/`); }}>
+                      Claim your free tokens
                     </Button>
             </Card.Actions>
           </Card>
@@ -82,20 +82,20 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
             {/* <Card.Title>h3</Card.Title> */}
             <Card.Image className='p-0 object-scale-down h-full w-full'
                 src={MondoImg.src}
-                alt="Run Prompt"
+                alt="Mondo NFT"
             />
             <Card.Body className='place-items-center !p-0'>
               <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl">
-                Run/Mint Prompts.
+                Mondo NFT
               </h1>
-              <h4 className="text-primary/80 text-sm mb-2 text-center">
-                Run Prompts here<br/>No more $20/month for each AI Model
+              <h4 className="text-primary/80 text-sm mb-2">
+                World Cup 2022 NFT Collection
               </h4>
             </Card.Body>
             <Card.Actions className="justify-center">
                     <Button color={'accent'} variant={'outline'} size={"sm"} className=" w-[80%] mb-4"
-                      onClick={() => { router.push(`/`); }}>
-                      Soon!
+                      onClick={() => { router.push(`/mondo/`); }}>
+                      Explore
                     </Button>
             </Card.Actions>
           </Card>

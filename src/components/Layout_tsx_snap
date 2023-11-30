@@ -48,7 +48,7 @@ interface LayoutProps {
             </Link>
             
         </Menu.Item>
-        {/* <Menu.Title>
+        <Menu.Title>
           <span>Tokens</span>
         </Menu.Title>
         <Menu.Item>
@@ -88,7 +88,7 @@ interface LayoutProps {
                 {t('menu.assets')}
             </Link>
         </Menu.Item>
-         */}
+        
         {/* <Menu.Item>
             <LocaleSwitcher/>
         </Menu.Item> */}
@@ -142,20 +142,23 @@ interface LayoutProps {
                     {/* <div className="flex flex-1 md:gap-1 lg:gap-2"> */}
                         <div className="flex-none hidden lg:block">
                         <Menu horizontal={true} className="p-0">
-                            {/* <Menu.Item>
+                            <Menu.Item>
                                 <Link href="/qafu-qatar/" className="rounded-lg mx-2">
+                                    {/* <ComponentsIcon/> */}
                                     <Qafu className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                                     {t('menu.qafu')}
                                 </Link>
                             </Menu.Item>
                             <Menu.Item>
                                 <Link href="/mondo/" className="rounded-lg mx-2">
+                                    {/* <ComponentsIcon/> */}
                                     <Mondo className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                                     {t('menu.mondo')}
                                 </Link>
                             </Menu.Item>
                             <Menu.Item>
                                 <Link href="/tokens/sym/" className="rounded-lg mx-2">
+                                    {/* <ComponentsIcon/> */}
                                     <Sym className="inline-block h-4 w-4 fill-current hover:fill-primary m-0 md:h-5 md:w-5"/>
                                     {t('menu.sym')}
                                 </Link>
@@ -171,7 +174,7 @@ interface LayoutProps {
                                     <User className="inline-block h-4 w-4 fill-current m-0 md:h-5 md:w-5"/>
                                     {t('menu.assets')}
                                 </Link>
-                            </Menu.Item> */}
+                            </Menu.Item>
                             {/* <Menu.Item>
                                 <LocaleSwitcher/>
                             </Menu.Item> */}
