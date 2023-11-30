@@ -1,32 +1,32 @@
 import { DefaultSeoProps } from 'next-seo';
 
 const config: DefaultSeoProps = {
-  titleTemplate: 'Snapmint | Mint your Content',
-  defaultTitle: 'Snapmint | Mint your Content',
-  title: 'Snapmint | Mint your Content',
-  description: 'NFT Marketplace and NFT Creator Platform',
-  canonical:'https://www.snapmint.io/',
+  titleTemplate: 'AICues | AI Services, Cues for everyone',
+  defaultTitle: 'AICues | AI Services, Cues for everyone',
+  title: 'AICues | AI Services, Cues for everyone',
+  description: 'Prompt Marketplace and AI Servcies Platform',
+  canonical:'https://www.AICues.io/',
 
   openGraph: {
-    title: 'Snapmint | Mint your Content',
-    description: 'NFT Marketplace and NFT Creator Platform',
-    url: 'https://www.snapmint.io/',
-    siteName: 'Snapmint',
+    title: 'AICues | AI Services, Cues for everyone',
+    description: 'Prompt Marketplace and AI Servcies Platform',
+    url: 'https://www.AICues.io/',
+    siteName: 'AICues',
     type: 'website',
     locale: 'en',
     images: [
       {
-        url: 'https://www.snapmint.io/og/twitter-cover-2.png',
+        url: 'https://www.AICues.io/og/twitter-cover-2.png',
         width: 876,
         height: 438,
-        alt: 'Snapmint',
+        alt: 'AICues',
       },
     ],
     
   },
   twitter: {
-    handle: '@snapmint_',
-    site: '@snapmint_',
+    handle: '@AICues_',
+    site: '@AICues_',
     cardType: 'summary_large_image',
   },
 };

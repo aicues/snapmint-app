@@ -89,10 +89,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, [country, city, lat, lon]);
   
   const snapmintMetaData :  DAppMetaData = {
-    name: 'Snapmint',
-    description: 'Snapmint is a decentralized minting platform for NFTs.',
-    url: 'https://www.snapmint.io',
-    logoUrl: 'https://www.snapmint.io/logo.svg',
+    name: 'AICues',
+    description: 'Democratising AI Services, Cues for everyone.',
+    url: 'https://www.aicues.io',
+    logoUrl: 'https://www.aicues.io/logo.svg',
     isDarkMode: true
   }
   // const head = (
