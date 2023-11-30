@@ -29,7 +29,7 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <section className="flex flex-col place-items-start p-8 lg:px-10 md:px-8 sm:px-8 h-max">
       <div className="grid w-full place-items-center pb-6">
         <h1 className="text-primary text-2xl sm:text-lg lg:text-2xl">
-          Create, Collect, and Sell NFTs
+          Lets Create, Collect, and Sell NFTs
         </h1>
       </div>
       <div className="container mx-auto">
