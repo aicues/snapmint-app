@@ -26,7 +26,7 @@ const config: DefaultSeoProps = {
   },
   twitter: {
     handle: '@AICues_',
-    site: '@AICues_',
+    site: '@AI Cues_',
     cardType: 'summary_large_image',
   },
 };
